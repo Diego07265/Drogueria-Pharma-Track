@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droguería</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Hace que la imagen ocupe toda la pantalla */
+        .fondo {
+            position: fixed;
+            /* Fija el fondo para que no se mueva al hacer scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Hace que la imagen se recorte proporcionalmente */
+            z-index: -1;
+            /* La envía al fondo para que no tape el contenido */
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 0 5px white);
+        }
+
+        /* Asegura que el contenido se vea encima */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Imagen de fondo -->
+    <img src="img/26800.jpg" alt="Fondo" class="fondo">
+
+    <!-- Contenedor principal -->
+    <div class="container vh-100 d-flex align-items-center justify-content-center" id="login">
+        <div class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-primary text-white py-2">
+                    <img src="img/Logo.png" alt="Pharma Track" class="logo mb-1" style="max-height: 80px;">
+                </div>
+
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="usuario" class="form-label"><strong>Usuario</strong></label>
+                            <input id="usuario" class="form-control form-control-md" type="text"
+                                placeholder="Ingrese su Usuario">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="clave" class="form-label"><strong>Contraseña</strong></label>
+                            <input id="clave" class="form-control form-control-md" type="password"
+                                placeholder="xxxxxxxxxx">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary"
+                                onclick="window.location.href='Gestioninventario.html'">Iniciar Sesión</button>
+                            <a href="Iniciosesion.html" class="btn btn-danger">Cancelar </a>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="#">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
