@@ -7,7 +7,7 @@
     <title>Droguería</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="formulario.js"></script>
+    <script src="formulario.js" type="text/javascript"></script>
 
     <style>
         /* Hace que la imagen ocupe toda la pantalla */
@@ -68,7 +68,7 @@
 
                         <div class="d-grid gap-2">
                             <button type="button" class="btn btn-primary"
-                                onclick="window.location.href='Gestioninventario.html'">Iniciar Sesión</button>
+                                onclick="IniciarSesion()">Iniciar Sesión</button>
                             <a href="Iniciosesion.html" class="btn btn-danger">Cancelar </a>
                         </div>
                         <div class="text-center mt-3">
@@ -90,7 +90,33 @@
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarReportes()">Reportes</a>
         </div>
     </div>
-
+    <!-- Fin del Dashboard -->
+    <!--Inventario -->
+    <div class="container mt-5 d-none" id="inventario">
+        <h3>Gestión de Inventario</h3>
+        <button class="btn btn-success mb-3" onclick="mostrarFormulario()">Nuevo Producto</button>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Lote</th>
+                    <th>Vencimiento</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>Parecetamol</td>
+                    <td>L-1023</td>
+                    <td>2026-01-15</td>
+                    <td>50</td>
+                    <td>$2.500</td>
+                </tr>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <!-- Fin del Inventario -->
 </body>
 
 </html>
