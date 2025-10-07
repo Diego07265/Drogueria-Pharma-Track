@@ -67,8 +67,8 @@
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-primary"
-                                onclick="IniciarSesion()">Iniciar Sesión</button>
+                            <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Iniciar
+                                Sesión</button>
                             <a href="Iniciosesion.html" class="btn btn-danger">Cancelar </a>
                         </div>
                         <div class="text-center mt-3">
@@ -112,12 +112,27 @@
                     <td>50</td>
                     <td>$2.500</td>
                 </tr>
-            </tbody>
+                <tr>
+                    <td>Ibuprofeno</td>
+                    <td>L-2045</td>
+                    <td>2025-11-30</td>
+                    <td>30</td>
+                    <td>$3.200</td>
+                </tr>
+                <tr>
+                    <td>Amoxicilina</td>
+                    <td>L-3098</td>
+                    <td>2024-12-20</td>
+                    <td>20</td>
+                    <td>$5.000</td>
+                </tr>
             </thead>
+            <tbody>
+
         </table>
     </div>
     <!-- Fin del Inventario -->
-     <!--Clientes-->
+    <!--Clientes-->
     <div class="container mt-5 d-none" id="clientes">
         <h3>Gestión de Clientes</h3>
         <p>Registrar y administrar Clientes.</p>
@@ -148,7 +163,7 @@
                 <label>Precio</label>
                 <input type="number" class="form-control" min="0">
             </div>
-            <button class="btn-btn-primary">Guardar</button>
+            <button class="btn btn-primary">Guardar</button>
             <button type="button" class="btn btn-secondary" onclick="mostrarInventario()">Cancelar</button>
         </form>
     </div>
