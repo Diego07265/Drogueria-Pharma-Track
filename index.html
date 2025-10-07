@@ -117,6 +117,41 @@
         </table>
     </div>
     <!-- Fin del Inventario -->
+     <!--Clientes-->
+    <div class="container mt-5 d-none" id="clientes">
+        <h3>Gestión de Clientes</h3>
+        <p>Registrar y administrar Clientes.</p>
+    </div>
+
+    <!--reportes-->
+    <div class="container mt-5 d-none" id="reportes">
+        <h3>Gestión de Reportes</h3>
+        <p>Generar y visualizar reportes.</p>
+    </div>
+    <!--Formulario Nuevo Producto-->
+    <div class="container mt-5 d-none" id="formulario">
+        <h3>Registrar Nuevo Producto</h3>
+        <form>
+            <div class="mb-3">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Ibuprofeno">
+            </div>
+            <div class="mb-3">
+                <label>Fecha de Vencimiento</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Cantidad</label>
+                <input type="number" class="form-control" min="1">
+            </div>
+            <div class="mb-3">
+                <label>Precio</label>
+                <input type="number" class="form-control" min="0">
+            </div>
+            <button class="btn-btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary" onclick="mostrarInventario()">Cancelar</button>
+        </form>
+    </div>
 </body>
 
 </html>
