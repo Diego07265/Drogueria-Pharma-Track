@@ -1,4 +1,4 @@
-function iniciarsesion() {
+function iniciarSesion() {
     document.getElementById("login").classList.add("d-none");
     document.getElementById('dashboard').classList.remove("d-none");
 }
