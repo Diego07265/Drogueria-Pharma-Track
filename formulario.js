@@ -34,3 +34,35 @@ function mostrarFormulario() {
     document.getElementById('inventario').classList.add('d-none');
     document.getElementById('formulario').classList.remove('d-none');
 }
+
+    const lista = document.getElementById("listadeEmpleados");
+    let filaSeleccionada = null;
+
+    // Permitir seleccionar una fila al hacer clic
+    lista.addEventListener("click", function (e) {
+      const fila = e.target.closest("tr"); // detectar la fila
+      if (!fila) return;
+
+      // Quitar selección anterior
+      if (filaSeleccionada) {
+        filaSeleccionada.classList.remove("selected-row");
+      }
+
+      // Marcar nueva selección
+      filaSeleccionada = fila;
+      fila.classList.add("selected-row");
+    });
+
+    // Botón eliminar
+    document.getElementById("btnEliminar").addEventListener("click", function () {
+      if (filaSeleccionada) {
+        if (confirm("¿Deseas eliminar este empleado?")) {
+          filaSeleccionada.remove();
+          filaSeleccionada = null;
+        }
+      } else {
+        alert("Primero selecciona un empleado de la tabla.");
+      }
+    });
+  
+
