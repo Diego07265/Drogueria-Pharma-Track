@@ -3,6 +3,11 @@ function iniciarSesion() {
     document.getElementById('dashboard').classList.remove("d-none");
 }
 
+function mostrarRegistro() {
+    document.getElementById("login").classList.add("d-none");
+    document.getElementById('registro').classList.remove("d-none");
+}
+
 function mostrarInventario() {
     document.getElementById("dashboard").classList.add("d-none");
     document.getElementById('inventario').classList.remove("d-none");
