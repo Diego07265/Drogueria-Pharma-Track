@@ -11,14 +11,14 @@ function mostrarRegistro() {
 function mostrarInventario() {
     document.getElementById("dashboard").classList.add("d-none");
     document.getElementById('inventario').classList.remove("d-none");
-    document.getElementById('clientes').classList.add("d-none");
+    document.getElementById('proveedores').classList.add("d-none");
     document.getElementById('reportes').classList.add("d-none");
     document.getElementById('formulario').classList.add("d-none");
 }
-function mostrarClientes() {
+function mostrarProveedores() {
     document.getElementById("dashboard").classList.add("d-none");
     document.getElementById('inventario').classList.add("d-none");
-    document.getElementById('clientes').classList.remove("d-none");
+    document.getElementById('proveedores').classList.remove("d-none");
     document.getElementById('reportes').classList.add("d-none");
     document.getElementById('formulario').classList.add("d-none");
 }
@@ -26,7 +26,7 @@ function mostrarReportes() {
     document.getElementById('dashboard').classList.add('d-none');
     document.getElementById('reportes').classList.remove('d-none');
     document.getElementById('inventario').classList.add('d-none');
-    document.getElementById('clientes').classList.add('d-none');
+    document.getElementById('proveedores').classList.add('d-none');
     document.ElementById('formulario').classList.add('d-none');
 }
 
