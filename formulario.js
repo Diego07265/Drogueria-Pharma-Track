@@ -46,6 +46,17 @@ function mostrarFormularioProveedores() {
   document.getElementById('formularioProveedores').classList.remove('d-none');
 }
 
+function volverLogin() {
+  // Ocultar todos los formularios y mostrar el login
+  document.getElementById('dashboard').classList.add('d-none');
+  document.getElementById('inventario').classList.add('d-none');
+  document.getElementById('proveedores').classList.add('d-none');
+  document.getElementById('reportes').classList.add('d-none');
+  document.getElementById('formulario').classList.add('d-none');
+  document.getElementById('formularioProveedores').classList.add('d-none');
+  document.getElementById('login').classList.remove('d-none');
+}
+
 const lista = document.getElementById("listadeEmpleados");
 let filaSeleccionada = null;
 
