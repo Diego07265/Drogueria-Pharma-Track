@@ -22,12 +22,27 @@ function mostrarProveedores() {
   document.getElementById('reportes').classList.add("d-none");
   document.getElementById('formulario').classList.add("d-none");
 }
+
+function mostrarEmpleados() {
+  document.getElementById("dashboard").classList.add("d-none");
+  document.getElementById("listadeEmpleados").classList.remove("d-none");
+  document.getElementById("inventario").classList.add("d-none");
+  document.getElementById("proveedores").classList.add("d-none");
+  document.getElementById("reportes").classList.add("d-none");
+  document.getElementById("formulario").classList.add("d-none");
+  document.getElementById("formempleados").classList.add("d-none");
+  document.getElementById("formularioProveedores").classList.add("d-none");
+}
+
 function mostrarReportes() {
   document.getElementById('dashboard').classList.add('d-none');
   document.getElementById('reportes').classList.remove('d-none');
   document.getElementById('inventario').classList.add('d-none');
   document.getElementById('proveedores').classList.add('d-none');
-  document.ElementById('formulario').classList.add('d-none');
+  document.getElementById('formulario').classList.add('d-none');
+  document.getElementById('listadeEmpleados').classList.add('d-none');
+  document.getElementById('formempleados').classList.add('d-none');
+  document.getElementById('formularioProveedores').classList.add('d-none');
 }
 
 function mostrarFormulario() {
@@ -35,6 +50,7 @@ function mostrarFormulario() {
   document.getElementById('proveedores').classList.add('d-none');
   document.getElementById('reportes').classList.add('d-none');
   document.getElementById('formulario').classList.remove('d-none');
+  document.getElementById("listaempleados").classList.add("d-none");
 }
 
 function mostrarFormularioProveedores() {
@@ -44,6 +60,17 @@ function mostrarFormularioProveedores() {
   document.getElementById('reportes').classList.add('d-none');
   document.getElementById('formulario').classList.add('d-none');
   document.getElementById('formularioProveedores').classList.remove('d-none');
+  document.getElementById("listaempleados").classList.add("d-none");
+}
+function mostrarFormularioEmpleados() {
+  document.getElementById('dashboard').classList.add('d-none');
+  document.getElementById('inventario').classList.add('d-none');
+  document.getElementById('proveedores').classList.add('d-none');
+  document.getElementById('reportes').classList.add('d-none');
+  document.getElementById('formulario').classList.add('d-none');
+  document.getElementById('formempleados').classList.remove('d-none');
+  document.getElementById('formularioProveedores').classList.add('d-none');
+  document.getElementById("listaempleados").classList.add("d-none");
 }
 
 function volverLogin() {
@@ -56,34 +83,39 @@ function volverLogin() {
   document.getElementById('formularioProveedores').classList.add('d-none');
   document.getElementById('login').classList.remove('d-none');
 }
+document.addEventListener("DOMContentLoaded", function () {
+  // Código para manejar la selección y eliminación de filas  
+  const lista = document.getElementById("listadeEmpleados");
+  if (!lista) return;
+  let filaSeleccionada = null;
 
-const lista = document.getElementById("listadeEmpleados");
-let filaSeleccionada = null;
+  // Permitir seleccionar una fila al hacer clic
+  lista.addEventListener("click", function (e) {
+    const fila = e.target.closest("tr"); // detectar la fila
+    if (!fila) return;
 
-// Permitir seleccionar una fila al hacer clic
-lista.addEventListener("click", function (e) {
-  const fila = e.target.closest("tr"); // detectar la fila
-  if (!fila) return;
-
-  // Quitar selección anterior
-  if (filaSeleccionada) {
-    filaSeleccionada.classList.remove("selected-row");
-  }
-
-  // Marcar nueva selección
-  filaSeleccionada = fila;
-  fila.classList.add("selected-row");
-});
-
-// Botón eliminar
-document.getElementById("btnEliminar").addEventListener("click", function () {
-  if (filaSeleccionada) {
-    if (confirm("¿Deseas eliminar este empleado?")) {
-      filaSeleccionada.remove();
-      filaSeleccionada = null;
+    // Quitar selección anterior
+    if (filaSeleccionada) {
+      filaSeleccionada.classList.remove("selected-row");
     }
-  } else {
-    alert("Primero selecciona un empleado de la tabla.");
+
+    // Marcar nueva selección
+    filaSeleccionada = fila;
+    fila.classList.add("selected-row");
+  });
+
+  // Botón eliminar
+  const btnEliminar = document.getElementById("btnEliminar");
+  if (btnEliminar) {
+    btnEliminar.addEventListener("click", function () {
+      if (filaSeleccionada) {
+        if (confirm("¿Deseas eliminar este empleado?")) {
+          filaSeleccionada.remove();
+          filaSeleccionada = null;
+        }
+      } else {
+        alert("Primero selecciona un empleado de la tabla.");
+      }
+    });
   }
 });
-

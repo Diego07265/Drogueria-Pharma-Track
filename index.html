@@ -92,7 +92,7 @@
         <div class="list-group">
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarInventario()">Inventario</a>
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarProveedores()">Proveedores</a>
-            <a href="#" class="list-group-item list-group-item-action" onclick="mostrarlistaempleados()">Empleados</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="mostrarEmpleados()">Empleados</a>
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarReportes()">Reportes</a>
         </div>
     </div>
@@ -172,14 +172,16 @@
     <!--Fin Proveedores-->
 
     <!--Empleados-->
-    <div class="container mt-5 d-none" id="listaempleados">
+    <div class="container mt-5 d-none" id="listadeEmpleados">
         <div class="row">
             <div class="col-12 mb-2">
                 <div class="alert alert-success" role="alert">
                     <h2 class="text-center">Lista de Empleados</h2>
+                    
                 </div>
             </div>
         </div>
+        <button class="btn btn-success mb-3" onclick="mostrarFormularioEmpleados()">Nuevo Empleado</button>
 
         <table class="table table-hover table-bordered">
             <thead class="table-dark">
@@ -188,7 +190,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
-                    <th>Teléfono</th>
+                    <th>Teléfono</th>                    
                 </tr>
             </thead>
             <tbody>
@@ -272,7 +274,7 @@
     </div>
     <!-- Fin del Formulario Nuevo Proveedor -->
      <!--Formulario Empleados-->
-     <div class="container mt-5">
+     <div class="container mt-5 d-none" id="formempleados">
         <h2>Formulario de Empleado</h2>
         <form>
             <div class="mb-3">
@@ -295,7 +297,7 @@
         </form>
     </div>
     <!--Fin Formulario Empleados-->
-    
+
     <!--Registro-->
     <div class="container mt-5 d-none" id="registro">
         <h3>Registro de Nuevo Usuario</h3>
