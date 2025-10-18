@@ -92,6 +92,7 @@
         <div class="list-group">
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarInventario()">Inventario</a>
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarProveedores()">Proveedores</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="mostrarlistaempleados()">Empleados</a>
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarReportes()">Reportes</a>
         </div>
     </div>
@@ -137,6 +138,7 @@
         </table>
     </div>
     <!-- Fin del Inventario -->
+
     <!--Proveedores-->
     <div class="container mt-5 d-none" id="proveedores">
         <h3>Gestión de Proveedores</h3>
@@ -167,7 +169,60 @@
             </tbody>
         </table>
     </div>
+    <!--Fin Proveedores-->
 
+    <!--Empleados-->
+    <div class="container mt-5 d-none" id="listaempleados">
+        <div class="row">
+            <div class="col-12 mb-2">
+                <div class="alert alert-success" role="alert">
+                    <h2 class="text-center">Lista de Empleados</h2>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jhon</td>
+                    <td>Ospina</td>
+                    <td>jhon.ospina@gmail.com</td>
+                    <td>3224805240</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Diego</td>
+                    <td>Ospina</td>
+                    <td>diego.ospina@gmail.com</td>
+                    <td>3112402503</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Julieth</td>
+                    <td>Castro</td>
+                    <td>julieth.castro@gmail.com</td>
+                    <td>3217297584</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-end">
+            <button id="btnAgregar" class="btn btn-primary">Agregar</button>
+            <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+        </div>
+    </div>
+    <!--Fin Empleados-->
     <!--reportes-->
     <div class="container mt-5 d-none" id="reportes">
         <h3>Gestión de Reportes</h3>
@@ -191,13 +246,14 @@
             </div>
             <div class="mb-3">
                 <label>Precio</label>
-                <input type="number" class="form-control" min="0" step="0.01" placeholder="5000.00">                
+                <input type="number" class="form-control" min="0" step="0.01" placeholder="5000.00">
             </div>
             <button class="btn btn-primary">Guardar</button>
             <button type="button" class="btn btn-secondary" onclick="mostrarInventario()">Cancelar</button>
         </form>
     </div>
     <!-- Fin del Formulario Nuevo Producto -->
+
     <!-- Formulario Nuevo Proveedor -->
     <div class="container mt-5 d-none" id="formularioProveedores">
         <h3>Registrar Nuevo Proveedor</h3>
@@ -211,9 +267,35 @@
             <div class="mb-3"><label>Email</label><input type="email" class="form-control"
                     placeholder="proveedor@correo.com"></div>
             <button type="button" class="btn btn-primary">Guardar</button>
-            <button type="button" class="btn btn-secondary" onclick="volverLogin()">Cancelar</button>            
+            <button type="button" class="btn btn-secondary" onclick="volverLogin()">Cancelar</button>
         </form>
     </div>
+    <!-- Fin del Formulario Nuevo Proveedor -->
+     <!--Formulario Empleados-->
+     <div class="container mt-5">
+        <h2>Formulario de Empleado</h2>
+        <form>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el teléfono">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    <!--Fin Formulario Empleados-->
+    
     <!--Registro-->
     <div class="container mt-5 d-none" id="registro">
         <h3>Registro de Nuevo Usuario</h3>
