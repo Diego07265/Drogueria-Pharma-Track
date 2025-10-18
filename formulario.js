@@ -14,6 +14,9 @@ function mostrarInventario() {
   document.getElementById('proveedores').classList.add("d-none");
   document.getElementById('reportes').classList.add("d-none");
   document.getElementById('formulario').classList.add("d-none");
+  document.getElementById('listadeEmpleados').classList.add("d-none");
+  document.getElementById('formempleados').classList.add("d-none");
+  document.getElementById('formularioProveedores').classList.add("d-none");
 }
 function mostrarProveedores() {
   document.getElementById("dashboard").classList.add("d-none");
@@ -21,6 +24,9 @@ function mostrarProveedores() {
   document.getElementById('proveedores').classList.remove("d-none");
   document.getElementById('reportes').classList.add("d-none");
   document.getElementById('formulario').classList.add("d-none");
+  document.getElementById('listadeEmpleados').classList.add("d-none");
+  document.getElementById('formempleados').classList.add("d-none");
+  document.getElementById('formularioProveedores').classList.add("d-none");
 }
 
 function mostrarEmpleados() {
@@ -50,7 +56,9 @@ function mostrarFormulario() {
   document.getElementById('proveedores').classList.add('d-none');
   document.getElementById('reportes').classList.add('d-none');
   document.getElementById('formulario').classList.remove('d-none');
-  document.getElementById("listaempleados").classList.add("d-none");
+  document.getElementById("listadeEmpleados").classList.add("d-none"); 
+  document.getElementById('formempleados').classList.add("d-none");  
+  document.getElementById('formularioProveedores').classList.add("d-none");
 }
 
 function mostrarFormularioProveedores() {
@@ -60,7 +68,8 @@ function mostrarFormularioProveedores() {
   document.getElementById('reportes').classList.add('d-none');
   document.getElementById('formulario').classList.add('d-none');
   document.getElementById('formularioProveedores').classList.remove('d-none');
-  document.getElementById("listaempleados").classList.add("d-none");
+  document.getElementById("listadeEmpleados").classList.add("d-none");
+  document.getElementById('formempleados').classList.add("d-none");
 }
 function mostrarFormularioEmpleados() {
   document.getElementById('dashboard').classList.add('d-none');
@@ -70,7 +79,7 @@ function mostrarFormularioEmpleados() {
   document.getElementById('formulario').classList.add('d-none');
   document.getElementById('formempleados').classList.remove('d-none');
   document.getElementById('formularioProveedores').classList.add('d-none');
-  document.getElementById("listaempleados").classList.add("d-none");
+  document.getElementById("listadeEmpleados").classList.add("d-none");
 }
 
 function volverLogin() {
@@ -81,6 +90,8 @@ function volverLogin() {
   document.getElementById('reportes').classList.add('d-none');
   document.getElementById('formulario').classList.add('d-none');
   document.getElementById('formularioProveedores').classList.add('d-none');
+  document.getElementById('listadeEmpleados').classList.add('d-none'); 
+  document.getElementById('formempleados').classList.add('d-none');
   document.getElementById('login').classList.remove('d-none');
 }
 document.addEventListener("DOMContentLoaded", function () {
