@@ -1,0 +1,59 @@
+<!--Proveedores-->
+<div class="container mt-5" id="proveedores">
+    <h3>Gestión de Proveedores</h3>
+    <p>Registrar y administrar Proveedores.</p>
+    <button class="btn btn-success mb-3" onclick="mostrarFormularioProveedores()">Nuevo Proveedor</button>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre del Proveedor</th>
+                <th>Contacto</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Proveedor 1</td>
+                <td>Contacto 1</td>
+                <td>123456789</td>
+                <td>proveedor1@example.com</td>
+            </tr>
+            <tr>
+                <td>Proveedor 2</td>
+                <td>Contacto 2</td>
+                <td>987654321</td>
+                <td>proveedor2@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-end">
+        <button id="btnAgregar" class="btn btn-primary">Agregar</button>
+        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+    </div>
+</div>
+
+<!-- Formulario Nuevo Proveedor -->
+<div class="container mt-5 d-none" id="formularioProveedores">
+    <h3>Registrar Nuevo Proveedor</h3>
+    <form>
+        <div class="mb-3">
+            <label>Nombre del Proveedor</label>
+            <input type="text" class="form-control" placeholder="Proveedor XYZ">
+        </div>
+        <div class="mb-3">
+            <label>Nombre del Contacto</label>
+            <input type="text" class="form-control" placeholder="Juan Pérez">
+        </div>
+        <div class="mb-3">
+            <label>Teléfono</label>
+            <input type="tel" class="form-control" placeholder="3001234567">
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="proveedor@correo.com">
+        </div>
+        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" onclick="mostrarProveedores()">Cancelar</button>
+    </form>
+</div>

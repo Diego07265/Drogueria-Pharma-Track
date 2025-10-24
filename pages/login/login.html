@@ -1,0 +1,62 @@
+<!-- Login Page -->
+<div class="container vh-100 d-flex align-items-center justify-content-center" id="login">
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+        <div class="card shadow-sm">
+            <div class="card-header text-center bg-primary text-white py-2">
+                <img src="../../img/Logo.png" alt="Pharma Track" class="logo mb-1" style="max-height: 100px;">
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label"><strong>Usuario</strong></label>
+                        <input id="usuario" class="form-control form-control-md" type="text"
+                            placeholder="Ingrese su Usuario">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="clave" class="form-label"><strong>Contraseña</strong></label>
+                        <input id="clave" class="form-control form-control-md" type="password"
+                            placeholder="xxxxxxxxxx">
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Iniciar
+                            Sesión</button>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-2">
+                        <button type="button" class="btn btn-danger"
+                            onclick="mostrarRegistro()">Registrarse</button>
+                    </div>
+                    <!-- Enlace para recuperar contraseña -->
+                    <div class="text-center mt-3">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Registro -->
+<div class="container mt-5 d-none" id="registro">
+    <h3>Registro de Nuevo Usuario</h3>
+    <form>
+        <div class="mb-3">
+            <label for="nuevoUsuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control form-control-md" id="nuevoUsuario"
+                placeholder="Ingrese su usuario">
+        </div>
+        <div class="mb-3">
+            <label for="nuevaClave" class="form-label">Contraseña</label>
+            <input type="password" class="form-control form-control-md" id="nuevaClave" placeholder="xxxxxxx">
+        </div>
+        <div class="mb-3">
+            <label for="confirmarClave" class="form-label">Confirmar Contraseña</label>
+            <input type="password" class="form-control form-control-md" id="confirmarClave" placeholder="xxxxxxx">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" onclick="volverLogin()">Cancelar</button>
+    </form>
+</div>

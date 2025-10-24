@@ -1,0 +1,75 @@
+<!--Empleados-->
+<div class="container mt-5" id="listadeEmpleados">
+    <div class="row">
+        <div class="col-12 mb-2">
+            <div class="alert alert-success" role="alert">
+                <h2 class="text-center">Lista de Empleados</h2>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-success mb-3" onclick="mostrarFormularioEmpleados()">Nuevo Empleado</button>
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Jhon</td>
+                <td>Ospina</td>
+                <td>jhon.ospina@gmail.com</td>
+                <td>3224805240</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Diego</td>
+                <td>Ospina</td>
+                <td>diego.ospina@gmail.com</td>
+                <td>3112402503</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Julieth</td>
+                <td>Castro</td>
+                <td>julieth.castro@gmail.com</td>
+                <td>3217297584</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-end">
+        <button id="btnAgregar" class="btn btn-primary">Agregar</button>
+        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+    </div>
+</div>
+
+<!--Formulario Empleados-->
+<div class="container mt-5 d-none" id="formempleados">
+    <h2>Formulario de Empleado</h2>
+    <form>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el teléfono">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" onclick="mostrarEmpleados()">Cancelar</button>
+    </form>
+</div>

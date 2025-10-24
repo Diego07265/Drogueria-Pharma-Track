@@ -7,21 +7,19 @@
     <title>Droguería</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="formulario.js" type="text/javascript"></script>
+    
+    <!-- Scripts de las páginas -->
+    <script src="formulario.js"></script>
 
     <style>
-        /* Hace que la imagen ocupe toda la pantalla */
         .fondo {
             position: fixed;
-            /* Fija el fondo para que no se mueva al hacer scroll */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Hace que la imagen se recorte proporcionalmente */
             z-index: -1;
-            /* La envía al fondo para que no tape el contenido */
         }
 
         .logo {
@@ -30,17 +28,19 @@
             filter: drop-shadow(0 0 5px white);
         }
 
-        /* Asegura que el contenido se vea encima */
         body,
         html {
             height: 100%;
             margin: 0;
         }
+
+        .selected-row {
+            background-color: #e9ecef;
+        }
     </style>
 </head>
 
 <body class="bg-light">
-
     <!-- Imagen de fondo -->
     <img src="img/26800.jpg" alt="Fondo" class="fondo">
 
@@ -84,7 +84,6 @@
             </div>
         </div>
     </div>
-    <!-- Fin del contenedor principal -->
 
     <!-- Dashboard -->
     <div class="container mt-5 d-none" id="dashboard">
@@ -96,7 +95,7 @@
             <a href="#" class="list-group-item list-group-item-action" onclick="mostrarReportes()">Reportes</a>
         </div>
     </div>
-    <!-- Fin del Dashboard -->
+
     <!--Inventario -->
     <div class="container mt-5 d-none" id="inventario">
         <h3>Gestión de Inventario</h3>
@@ -110,6 +109,7 @@
                     <th>Cantidad</th>
                     <th>Precio</th>
                 </tr>
+            </thead>
             <tbody>
                 <tr>
                     <td>Parecetamol</td>
@@ -132,12 +132,9 @@
                     <td>20</td>
                     <td>$5.000</td>
                 </tr>
-                </thead>
-            <tbody>
-
+            </tbody>
         </table>
     </div>
-    <!-- Fin del Inventario -->
 
     <!--Proveedores-->
     <div class="container mt-5 d-none" id="proveedores">
@@ -173,7 +170,6 @@
             <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
         </div>
     </div>
-    <!--Fin Proveedores-->
 
     <!--Empleados-->
     <div class="container mt-5 d-none" id="listadeEmpleados">
@@ -225,14 +221,12 @@
             <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
         </div>
     </div>
-    <!--Fin Empleados-->
 
-    <!--reportes-->
+    <!--Reportes-->
     <div class="container mt-5 d-none" id="reportes">
         <h3>Gestión de Reportes</h3>
         <p>Generar y visualizar reportes.</p>
     </div>
-    <!--Fin Reportes-->
 
     <!--Formulario Nuevo Producto-->
     <div class="container mt-5 d-none" id="formulario">
@@ -258,9 +252,8 @@
             <button type="button" class="btn btn-secondary" onclick="mostrarInventario()">Cancelar</button>
         </form>
     </div>
-    <!-- Fin del Formulario Nuevo Producto -->
 
-    <!-- Formulario Nuevo Proveedor -->
+    <!--Formulario Proveedores-->
     <div class="container mt-5 d-none" id="formularioProveedores">
         <h3>Registrar Nuevo Proveedor</h3>
         <form>
@@ -282,10 +275,8 @@
             </div>
             <button type="button" class="btn btn-primary">Guardar</button>
             <button type="button" class="btn btn-secondary" onclick="mostrarProveedores()">Cancelar</button>
-            
         </form>
     </div>
-    <!-- Fin del Formulario Nuevo Proveedor -->
 
     <!--Formulario Empleados-->
     <div class="container mt-5 d-none" id="formempleados">
@@ -311,7 +302,6 @@
             <button type="button" class="btn btn-secondary" onclick="mostrarEmpleados()">Cancelar</button>
         </form>
     </div>
-    <!--Fin Formulario Empleados-->
 
     <!--Registro-->
     <div class="container mt-5 d-none" id="registro">
@@ -334,7 +324,6 @@
             <button type="button" class="btn btn-secondary" onclick="volverLogin()">Cancelar</button>
         </form>
     </div>
-
 </body>
 
 </html>
