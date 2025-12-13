@@ -52,7 +52,7 @@ require_once __DIR__ . '/../config/bd.php';
             </div>
         
         <div class="card-body">
-            <form action="http://localhost:8080/pharma-track/public/store.php" method="post">
+            <form action="/pharma-track/public/store.php" method="post">
 
 
 
