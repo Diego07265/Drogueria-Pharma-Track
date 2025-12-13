@@ -1,6 +1,14 @@
 # Droguería-Pharma-Track
 
 Sistema de gestión para droguerías que permite administrar inventario, proveedores, empleados y generar reportes.
+desarrollado en PHP, MySQL, HTML, CSS y Bootstrap.
+
+Incluye:
+- CRUD de productos
+- Conexión a base de datos con PDO
+- Interfaz responsive con Bootstrap
+- Proyecto académico (evidencia)
+
 
 ## 📋 Descripción
 
@@ -78,10 +86,4 @@ Notas técnicas cortas
 - Datos: tablas están hardcodeadas dentro de `index.html`.
 - Comportamientos de ejemplo: selección de fila y eliminación en la lista de empleados está implementada en `formulario.js` con confirmación `confirm()`.
 
-Si deseas, puedo a continuación implementar una de estas tareas (elige una):
-- Añadir persistencia rápida con LocalStorage para inventario/proveedores/empleados.
-- Crear un pequeño backend de ejemplo (Express + SQLite) con endpoints CRUD.
-- Modularizar las vistas en archivos separados y cargar `formulario.js` de forma modular.
 
----
-Archivo actualizado: `README.md` (descripción enfocada exclusivamente al estado actual del frontend).
