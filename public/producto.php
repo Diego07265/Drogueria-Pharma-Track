@@ -56,7 +56,7 @@ try {
     <nav class="navbar navbar-dark bg-primary shadow">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/pharma-track/index.php">
-                <img src="/pharma-track/img/Logo.png" class="logo me-2" alt="Logo Pharma Track">
+                <img src="/pharma-track/img/Logo.png" class="logo me-2" alt="Logo Pharma Track">                
                 <strong>Droguería - Gestión de Productos</strong>
             </a>
         </div>
@@ -115,10 +115,11 @@ try {
                     </table>
                 <?php endif; ?>
                 <div class="mt-3">
-                    <a href="/pharma-track/index.php" class="btn btn-secondary">⬅ Volver al Dashboard</a>
+                    <a href="../dashboard.php" class="btn btn-secondary">⬅ Volver al Dashboard</a>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

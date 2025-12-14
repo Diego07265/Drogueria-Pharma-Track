@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-primary" onclick="mostrarDashboard()">
+                            <button type="button" class="btn btn-primary" onclick="window.location.href='dashboard.php'">
                                 Iniciar Sesión
                             </button>
                         </div>
