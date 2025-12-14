@@ -1,20 +1,24 @@
 <?php
 declare(strict_types=1);
+
 require_once __DIR__ . '/../config/bd.php';
 
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$producto_id = $_GET['id'] ?? null;
 
-if ($id <= 0) {
-    die("ID inválido.");
+if ($producto_id === null || !is_numeric($producto_id)) {
+    header('Location: producto.php?msg=ID inválido');
+    exit;
 }
 
 try {
-    $stmt = $pdo->prepare("DELETE FROM producto WHERE producto_id = :id");
-    $stmt->execute(['id' => $id]);
+    $sql = "DELETE FROM producto WHERE producto_id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $producto_id]);
 
-    header("Location: index.php?msg=Producto eliminado");
+    header('Location: producto.php?msg=Producto eliminado correctamente');
     exit;
 
 } catch (PDOException $e) {
-    die("Error al eliminar: " . $e->getMessage());
+    header('Location: producto.php?msg=Error al eliminar el producto');
+    exit;
 }

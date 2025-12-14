@@ -9,7 +9,8 @@ if ($producto_id === null || !is_numeric($producto_id)) {
   echo "<div class='container mt-3'><div class='alert alert-warning'>ID de producto inválido.</div></div>";
   exit;
 }
-//Obtener el producto a editar
+
+// Obtener el producto a editar
 try {
   $sql = 'SELECT * FROM producto WHERE producto_id = :id LIMIT 1';
   $stmt = $pdo->prepare($sql);
@@ -24,6 +25,29 @@ try {
   echo "<div class='container mt-3'><div class='alert alert-danger'>Error: " . htmlspecialchars($e->getMessage()) . "</div></div>";
   exit;
 }
+
+
+// AGREGAR ESTAS LÍNEAS PARA CARGAR DATOS
+
+
+// Obtener categorías
+try {
+  $sql_categorias = 'SELECT categoria_id, nombre FROM categoria ORDER BY nombre';
+  $stmt_categorias = $pdo->query($sql_categorias);
+  $categorias = $stmt_categorias->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  $categorias = [];
+}
+
+// Obtener proveedores
+try {
+  $sql_proveedores = 'SELECT id_proveedor, nombre FROM proveedor ORDER BY nombre';
+  $stmt_proveedores = $pdo->query($sql_proveedores);
+  $proveedores = $stmt_proveedores->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  $proveedores = [];
+}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -36,42 +60,43 @@ try {
   <style>
     .fondo {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       z-index: -1;
     }
 
+    .navbar,
+    .container,
+    .card {
+      position: relative;
+      z-index: 1;
+    }
+
     .logo {
       width: 150px;
       filter: drop-shadow(0 0 5px white);
-    }
-
-    body,
-    html {
-      height: 100%;
-      margin: 0;
     }
   </style>
 </head>
 
 <body class="bg-light">
   <img src="/pharma-track/img/26800.jpg" class="fondo" alt="Fondo">
+  
   <!-- Header -->
   <nav class="navbar navbar-dark bg-primary shadow">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="/pharma-track/index.php">
-        <img src="/pharma-track/img/Logo.png" class="logo me-2">
+        <img src="/pharma-track/img/Logo.png" class="logo me-2" alt="Logo">
         <strong>Droguería - Gestión de Productos</strong>
       </a>
     </div>
   </nav>
 
-  <!--Formulario de edición-->
-  <div class="container mt-5">
-    <div class="card shadow">
+  <!-- Formulario de edición -->
+  <div class="container mt-5 mb-5">
+    <div class="card shadow bg-white">
       <div class="card-header bg-primary text-white">
         <h5 class="mb-0">Editar Producto</h5>
       </div>
@@ -86,10 +111,20 @@ try {
               <input name="nombre" class="form-control" value="<?= htmlspecialchars($producto['nombre']) ?>" required>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Categoría</label>
-              <input name="categoria_id" class="form-control" value="<?= htmlspecialchars($producto['categoria_id']) ?>" required>
+              <label class="form-label">Categoría *</label>
+              <select name="categoria_id" class="form-select" required>
+                <option value="">-- Seleccionar Categoría --</option>
+                <?php foreach ($categorias as $categoria): ?>
+                  <option 
+                    value="<?= htmlspecialchars((string)$categoria['categoria_id']) ?>"
+                    <?= $categoria['categoria_id'] == $producto['categoria_id'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($categoria['nombre']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
             </div>
           </div>
+
           <div class="row mb-3">
             <div class="col-md-6">
               <label class="form-label">Precio</label>
@@ -100,14 +135,24 @@ try {
               <input type="number" name="stock" class="form-control" value="<?= htmlspecialchars((string)$producto['stock']) ?>" required>
             </div>
           </div>
+
           <div class="row mb-3">
             <div class="col-md-6">
-              <label class="form-label">fecha_vencimiento</label>
-              <input name="fecha_vencimiento" type="date" class="form-control" value="<?= htmlspecialchars((string)$producto['fecha_vencimiento']) ?>">
+              <label class="form-label">Fecha de Vencimiento</label>
+              <input type="date" name="fecha_vencimiento" class="form-control" value="<?= htmlspecialchars((string)$producto['fecha_vencimiento']) ?>">
             </div>
             <div class="col-md-6">
-              <label class="form-label">ID Proveedor</label>
-              <input name="id_proveedor" type="number" class="form-control" value="<?= htmlspecialchars((string)$producto['id_proveedor']) ?>" required>
+              <label class="form-label">Proveedor *</label>
+              <select name="id_proveedor" class="form-select" required>
+                <option value="">-- Seleccionar Proveedor --</option>
+                <?php foreach ($proveedores as $proveedor): ?>
+                  <option 
+                    value="<?= htmlspecialchars((string)$proveedor['id_proveedor']) ?>"
+                    <?= $proveedor['id_proveedor'] == $producto['id_proveedor'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($proveedor['nombre']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
             </div>
           </div>
 
@@ -117,7 +162,7 @@ try {
           </div>
 
           <div class="d-flex justify-content-between">
-            <a href="/pharma-track/public/producto.php" class="btn btn-secondary">⬅ cancelar</a>
+            <a href="/pharma-track/public/producto.php" class="btn btn-secondary">⬅ Cancelar</a>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
           </div>
         </form>
@@ -125,4 +170,5 @@ try {
     </div>
   </div>
 </body>
+
 </html>
