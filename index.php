@@ -11,7 +11,7 @@
     <script src="/pharma-track/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS propio -->
-    <script src="formulario.js"></script>
+    <!--<script src="formulario.js"></script>-->
 
     <style>
         .fondo {
