@@ -144,11 +144,11 @@ $claseVencer = $proximosVencer > 0 ? 'border-warning' : 'border-success';
                     <a href="/pharma-track/public/producto.php" class="btn btn-outline-primary">
                         Inventario (Productos)
                     </a>
-                    <a href="create.php" class="btn btn-outline-success">Agregar Producto</a>
+                    <a href="/pharma-track/public/create.php" class="btn btn-outline-success">Agregar Producto</a>
                     <a href="#" class="btn btn-outline-secondary">
                         Categorias
                     </a>
-                    <a href="#" class="btn btn-outline-warning">
+                    <a href="/pharma-track/pages/providers/providers.html" class="btn btn-outline-warning">
                         Proveedores
                     </a>
                 </div>
