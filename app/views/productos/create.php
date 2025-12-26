@@ -1,9 +1,3 @@
-<?php
-
-declare(strict_types=1);
-require_once __DIR__ . '/../config/bd.php';
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -52,7 +46,7 @@ require_once __DIR__ . '/../config/bd.php';
             </div>
         
         <div class="card-body">
-            <form action="/pharma-track/public/store.php" method="post">
+            <form action="index.php?action=store" method="post">
 
 
 
@@ -101,7 +95,7 @@ require_once __DIR__ . '/../config/bd.php';
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="producto.php" class="btn btn-secondary">
+                    <a href="index.php" class="btn btn-secondary">
                         ⬅ Cancelar
                     </a>
 

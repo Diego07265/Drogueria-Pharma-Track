@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Archivo: store.php
+ * Descripción: Inserta un producto en la base de datos
+ * Autor: Diego Ospina
+ */
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/../config/bd.php';

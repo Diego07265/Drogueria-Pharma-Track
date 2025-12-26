@@ -58,3 +58,4 @@ try {
     header('Location: producto.php?msg=Error al actualizar el producto');
     exit;
 }
+
