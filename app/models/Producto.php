@@ -47,7 +47,9 @@ class Producto
 
     public function eliminar(int $id): void
     {
-        $stmt = $this->pdo->prepare("DELETE FROM producto WHERE id = :id");
+        global $pdo;
+        $sql = "DELETE FROM producto WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
     }
 }

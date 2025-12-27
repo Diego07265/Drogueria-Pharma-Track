@@ -62,10 +62,12 @@ class productoController
     public function delete()
     {
         if (isset($_GET['id'])) {
+            $id = (int) $_GET['id'];
             $producto = new producto();
-            $producto->eliminar($_GET['id']);
-            header('location: index.php');
-            echo "Función eliminar en proceso de migración MVC";
+            $producto->eliminar($_GET['id']);   
+            header('Location: index.php');
+            exit;
         }
+        
     }
 }
