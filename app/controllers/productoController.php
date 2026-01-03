@@ -6,14 +6,15 @@
  */
 
 declare(strict_types=1);
-require_once __DIR__ . '/../models/producto.php';
+require_once __DIR__ . '/../models/Producto.php';
 
-class productoController
+class ProductoController
 {
-    public function index()
+    public function index(): void
     {
-        $producto = new producto();
+        $producto = new Producto();
         $productos = $producto->listar();
+
         require_once __DIR__ . '/../views/productos/index.php';
     }
 
@@ -22,6 +23,7 @@ class productoController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Recibir y limpiar datos
+
             $datos = [
                 'nombre' => trim($_POST['nombre'] ?? ''),
                 'categoria_id' => (int) ($_POST['categoria_id'] ?? 0),
@@ -33,6 +35,7 @@ class productoController
             ];
 
             // Validaciones básicas
+
             if (
                 $datos['nombre'] === '' ||
                 $datos['categoria_id'] <= 0 ||
@@ -44,11 +47,12 @@ class productoController
             }
 
             // Guardar usando el modelo
+
             $producto = new Producto();
             $producto->guardar($datos);
 
             // Redirigir al listado
-            header('Location: index.php?msg=ok');
+            header('Location: /pharma-track/public/index.php?controller=producto&action=index&msg=ok');
             exit;
         }
     }
@@ -58,16 +62,44 @@ class productoController
         require_once __DIR__ . '/../views/productos/create.php';
     }
 
-    
-    public function delete()
+
+    public function delete(): void
     {
-        if (isset($_GET['id'])) {
-            $id = (int) $_GET['id'];
-            $producto = new producto();
-            $producto->eliminar($_GET['id']);   
-            header('Location: index.php');
+        // Validar ID recibido por GET
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
             exit;
         }
-        
+
+        $id = (int) $_GET['id'];
+
+        // Llamar al modelo
+        $producto = new Producto();
+        $producto->eliminar($id);
+        // Redirigir al listado
+        header('Location: /pharma-track/public/index.php?controller=producto&action=index&msg=deleted');
+        exit;
+    }
+
+    public function edit(): void
+    {
+        // Validar ID
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+            exit;
+        }
+        $id = (int) $_GET['id'];
+
+        //Obtener producto del modelo
+        $productoModel = new Producto();
+        $producto = $productoModel->obtenerPorId($id);
+
+        if (!$producto) {
+            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+            exit;
+        }
+        require_once __DIR__ . '/../views/productos/edit.php';
     }
 }

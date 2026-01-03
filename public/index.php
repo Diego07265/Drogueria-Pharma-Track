@@ -1,29 +1,45 @@
 <?php
-/** 
- * punto de entrada de la aplicación 
- * Implementa el enrutamiento basico bajo arquitectura MVC  */ 
+/**
+ * Punto de entrada de la aplicación
+ * Front Controller - MVC
+ */
 
-// Mostrar errores (solo en desarrollo)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Obtener controlador y acción
+$controllerName = $_GET['controller'] ?? 'producto';
+$action = $_GET['action'] ?? 'index';
 
-// Cargar controlador
-require_once __DIR__ . '/../app/controllers/ProductoController.php';
+// Normalizar nombre del controlador
+$controllerClass = ucfirst($controllerName) . 'Controller';
+$controllerFile  = __DIR__ . '/../app/controllers/' . $controllerClass . '.php';
 
-$controller = new ProductoController();
+// Verificar controlador
+if (!file_exists($controllerFile)) {
+    header('HTTP/1.0 404 Not Found');
+    echo "404 - Controlador no encontrado";
+    exit;
+}
+
+require_once $controllerFile;
+
+// Verificar clase
+if (!class_exists($controllerClass)) {
+    header('HTTP/1.0 404 Not Found');
+    echo "404 - Clase del controlador no encontrada";
+    exit;
+}
+
+$controller = new $controllerClass();
 
 // Acciones permitidas
 $accionesPermitidas = ['index', 'create', 'store', 'edit', 'update', 'delete'];
-
-// Acción solicitada
-$action = $_GET['action'] ?? 'index';
 
 // Ejecutar acción
 if (in_array($action, $accionesPermitidas) && method_exists($controller, $action)) {
     $controller->$action();
 } else {
     header('HTTP/1.0 404 Not Found');
-    echo " 404 - Acción no válida";
+    echo "404 - Acción no válida";
 }
-
