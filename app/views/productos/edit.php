@@ -1,53 +1,6 @@
 <?php
-
-declare(strict_types=1);
-require_once __DIR__ . '/../config/bd.php';
-
-// Validar ID recibido
-$producto_id = $_GET['id'] ?? null;
-if ($producto_id === null || !is_numeric($producto_id)) {
-  echo "<div class='container mt-3'><div class='alert alert-warning'>ID de producto inválido.</div></div>";
-  exit;
-}
-
-// Obtener el producto a editar
-try {
-  $sql = 'SELECT * FROM producto WHERE producto_id = :id LIMIT 1';
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute(['id' => $producto_id]);
-  $producto = $stmt->fetch(PDO::FETCH_ASSOC);
-
-  if (!$producto) {
-    echo "<div class='container mt-3'><div class='alert alert-warning'>Producto no encontrado.</div></div>";
-    exit;
-  }
-} catch (PDOException $e) {
-  echo "<div class='container mt-3'><div class='alert alert-danger'>Error: " . htmlspecialchars($e->getMessage()) . "</div></div>";
-  exit;
-}
-
-
-// AGREGAR ESTAS LÍNEAS PARA CARGAR DATOS
-
-
-// Obtener categorías
-try {
-  $sql_categorias = 'SELECT categoria_id, nombre FROM categoria ORDER BY nombre';
-  $stmt_categorias = $pdo->query($sql_categorias);
-  $categorias = $stmt_categorias->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  $categorias = [];
-}
-
-// Obtener proveedores
-try {
-  $sql_proveedores = 'SELECT id_proveedor, nombre FROM proveedor ORDER BY nombre';
-  $stmt_proveedores = $pdo->query($sql_proveedores);
-  $proveedores = $stmt_proveedores->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  $proveedores = [];
-}
-
+$categorias = $categorias ?? [];
+$proveedores = $proveedores ?? [];
 ?>
 <!doctype html>
 <html lang="es">
@@ -83,7 +36,7 @@ try {
 
 <body class="bg-light">
   <img src="/pharma-track/img/26800.jpg" class="fondo" alt="Fondo">
-  
+
   <!-- Header -->
   <nav class="navbar navbar-dark bg-primary shadow">
     <div class="container">
@@ -102,8 +55,8 @@ try {
       </div>
 
       <div class="card-body">
-        <form action="/pharma-track/public/update.php" method="post">
-          <input type="hidden" name="producto_id" value="<?= htmlspecialchars((string)$producto['producto_id']) ?>">
+        <form action="/pharma-track/public/index.php?controller=producto&action=update" method="post">
+          <input type="hidden" name="producto_id" value="<?= (int)$producto['producto_id'] ?>">
 
           <div class="row mb-3">
             <div class="col-md-6">
@@ -112,10 +65,10 @@ try {
             </div>
             <div class="col-md-6">
               <label class="form-label">Categoría *</label>
-              <select name="categoria_id" class="form-select" required>
+              <select name="categoria_id" class="form-select">
                 <option value="">-- Seleccionar Categoría --</option>
                 <?php foreach ($categorias as $categoria): ?>
-                  <option 
+                  <option
                     value="<?= htmlspecialchars((string)$categoria['categoria_id']) ?>"
                     <?= $categoria['categoria_id'] == $producto['categoria_id'] ? 'selected' : '' ?>>
                     <?= htmlspecialchars($categoria['nombre']) ?>
@@ -143,10 +96,10 @@ try {
             </div>
             <div class="col-md-6">
               <label class="form-label">Proveedor *</label>
-              <select name="id_proveedor" class="form-select" required>
+              <select name="id_proveedor" class="form-select" >
                 <option value="">-- Seleccionar Proveedor --</option>
                 <?php foreach ($proveedores as $proveedor): ?>
-                  <option 
+                  <option
                     value="<?= htmlspecialchars((string)$proveedor['id_proveedor']) ?>"
                     <?= $proveedor['id_proveedor'] == $producto['id_proveedor'] ? 'selected' : '' ?>>
                     <?= htmlspecialchars($proveedor['nombre']) ?>
@@ -162,8 +115,10 @@ try {
           </div>
 
           <div class="d-flex justify-content-between">
-            <a href="/pharma-track/public/producto.php" class="btn btn-secondary">⬅ Cancelar</a>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="/pharma-track/public/index.php?controller=producto&action=index"
+              class="btn btn-secondary">⬅ Cancelar</a>
+            <button type="submit"
+              class="btn btn-primary">Guardar Cambios</button>
           </div>
         </form>
       </div>

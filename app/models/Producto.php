@@ -21,8 +21,9 @@ class Producto
 
     public function listar(): array
     {
-        $sql = "SELECT * FROM producto";
-        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->prepare("SELECT * FROM producto");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function guardar(array $datos): void
@@ -47,7 +48,7 @@ class Producto
 
     public function eliminar(int $id): void
     {
-        $sql = "DELETE FROM producto WHERE id = :id";
+        $sql = "DELETE FROM producto WHERE producto_id = :id";
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->execute([':id' => $id]);
@@ -55,7 +56,7 @@ class Producto
 
     public function obtenerPorId(int $id): ?array
     {
-        $sql = "SELECT * FROM producto WHERE id = :id";
+        $sql = "SELECT * FROM producto WHERE producto_id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
 
@@ -63,4 +64,30 @@ class Producto
 
         return $producto ?: null;
     }
+
+    public function actualizar(int $id, array $datos): void
+    {
+        $sql = "UPDATE producto SET
+        nombre = :nombre,
+        categoria_id = :categoria_id,
+        precio = :precio,
+        stock = :stock,
+        fecha_vencimiento = :fecha_vencimiento,
+        requiere_receta = :requiere_receta,
+        id_proveedor = :id_proveedor
+        WHERE producto_id = :id";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->execute([
+            ':nombre' => $datos['nombre'],
+            ':categoria_id' => $datos['categoria_id'],
+            ':precio' => $datos['precio'],
+            ':stock' => $datos['stock'],
+            ':fecha_vencimiento' => $datos['fecha_vencimiento'],
+            ':requiere_receta' => $datos['requiere_receta'],
+            ':id_proveedor' => $datos['id_proveedor'],
+            ':id' => $id
+        ]);
     }
+}

@@ -2,6 +2,7 @@
 $productos = $productos ?? [];
 ?>
 
+<!--prueba de commit-->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -48,6 +49,7 @@ $productos = $productos ?? [];
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Acciones</th>
@@ -58,6 +60,7 @@ $productos = $productos ?? [];
             
                 <?php foreach ($productos as $p): ?>
                     <tr>
+                        <td><?= (int)$p['producto_id'] ?></td>
                         <td><?= htmlspecialchars($p['nombre']) ?></td>
                         <td><?= number_format((float)$p['precio'], 2) ?></td>
                         <td>
