@@ -1,94 +1,90 @@
-DROGUERÍA PHARMA TRACK
+Pharma-Track 💊  
+Sistema básico de gestión para una droguería
 
-Sistema web para la gestión de una droguería, desarrollado como proyecto académico, que evolucionó de un prototipo frontend a una aplicación funcional con backend en PHP y base de datos MySQL.
+📌 Descripción del proyecto
 
-📋 Descripción
+Pharma-Track es un proyecto desarrollado en PHP que permite gestionar productos de una droguería.  
+Actualmente cuenta con un *CRUD de productos* (crear, listar, editar y eliminar), aplicando una estructura basada en el *patrón MVC (Modelo–Vista–Controlador)*.
 
-Pharma Track permite administrar el inventario de productos farmacéuticos mediante un dashboard dinámico y un CRUD de productos, facilitando el control de stock, fechas de vencimiento y productos que requieren receta médica.
+Este proyecto hace parte de un proceso de aprendizaje en **Análisis y Desarrollo de Software**, enfocado en buenas prácticas, orden del código y comprensión de la arquitectura.
 
-El proyecto está desarrollado con PHP, MySQL, HTML, CSS y Bootstrap 5, y se ejecuta en entorno local con XAMPP.
+---
 
-🚀 Funcionalidades actuales
-🔐 Acceso al sistema
+🧱 Arquitectura del proyecto
+El proyecto está organizado siguiendo el patrón *MVC*, lo que permite separar responsabilidades y facilitar el mantenimiento.
 
-Pantalla de inicio (login visual)
+- *Modelo (Model):** Maneja la lógica de datos y la conexión con la base de datos.
+- **Vista (View):** Contiene las interfaces gráficas (formularios y listados).
+- **Controlador (Controller):** Gestiona la lógica entre el modelo y la vista.
 
-Redirección al dashboard
+---
 
-Opción de regresar al login desde el dashboard
+## 📂 Estructura principal del proyecto
 
-⚠️ Nota: el login actual es visual (sin autenticación real), implementado para fines académicos.
-
-📊 Dashboard
-
-Total de productos registrados
-
-Productos con stock bajo
-
-Productos que requieren receta médica
-
-Productos próximos a vencer (30 días)
-
-Accesos rápidos a los módulos
-
-📦 Gestión de productos (CRUD)
-
-Listar productos
-
-Crear producto
-
-Editar producto
-
-Eliminar producto
-
-Conexión a base de datos usando PDO
-
-🛠️ Tecnologías utilizadas
-
-PHP 8+
-
-MySQL
-
-Bootstrap 5
-
-HTML5 / CSS3
-
-XAMPP
-
-📂 Estructura del proyecto
 pharma-track/
-│── config/
-│   └── bd.php
-│── public/
-│   ├── producto.php
-│   ├── create.php
-│   ├── edit.php
-│   └── delete.php
-│── css/
-│── js/
-│── img/
-│── index.php
-│── dashboard.php
-│── README.md
-▶️ Cómo ejecutar el proyecto
+│
+├── app/
+│ ├── controllers/ # Controladores (ProductoController)
+│ ├── models/ # Modelos (Producto)
+│ ├── views/ # Vistas (CRUD de productos)
+│ ├── config/ # Configuración interna
+│
+├── public/
+│ ├── index.php # Front controller
+│
+├── config/
+│ └── bd.php # Conexión a la base de datos
+│
+├── css/ # Estilos (Bootstrap)
+├── js/ # JavaScript
+├── img/ # Imágenes del proyecto
+├── sql/ # Script de la base de datos
+│
+└── README.md
 
-Instalar XAMPP
+Durante el desarrollo se migraron archivos antiguos.  
+Algunos archivos legacy se conservaron solo como referencia.
 
-Clonar este repositorio dentro de:
+---
 
-C:/xampp/htdocs/
+## ⚙️ Funcionalidades actuales
+- Listar productos
+- Crear productos
+- Editar productos
+- Eliminar productos
+- Validaciones básicas de formularios
+- Interfaz con Bootstrap
 
-Iniciar Apache y MySQL desde XAMPP
+---
 
-Importar la base de datos en phpMyAdmin
+## 🛠️ Tecnologías utilizadas
+- PHP (programación estructurada y MVC)
+- MySQL
+- HTML5
+- CSS3
+- Bootstrap
+- JavaScript
+- XAMPP (entorno local)
 
-Acceder desde el navegador:
+---
 
-http://localhost:8080/pharma-track/
-🎓 Estado del proyecto
+## 🗄️ Base de datos
+El archivo SQL se encuentra en la carpeta:
 
-✔ Dashboard dinámico ✔ CRUD funcional con base de datos ✔ Navegación entre login, dashboard y módulos ✔ Listo para entrega académica
+/sql/drogueriapharmatrack.sql
 
+Incluye la estructura necesaria para la tabla de productos.
+
+---
+
+## 🚀 Estado del proyecto
+🔧 En desarrollo  
+Pendiente por implementar:
+- Categorías
+- Proveedores
+- Validaciones avanzadas
+- Mejoras de seguridad
+- 
 ✍️ Autor
 
 Diego Ospina
