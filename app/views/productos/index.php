@@ -1,19 +1,37 @@
 <?php
 $productos = $productos ?? [];
 ?>
-
-<!--prueba de commit-->
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <title>Productos</title>
-    <link rel="stylesheet" href="/pharma-track/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/pharma-track/assets/css/bootstrap.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background-image: url("/pharma-track/assets/img/26800.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Caja blanca para que el contenido se lea */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .logo {
+            width: 150px;            
+        }
+    </style>
 </head>
 
 <body class="container mt-4">
+
 
     <h2>Listado de Productos</h2>
 
@@ -57,7 +75,7 @@ $productos = $productos ?? [];
         </thead>
         <tbody>
             <?php if (!empty($productos)): ?>
-            
+
                 <?php foreach ($productos as $p): ?>
                     <tr>
                         <td><?= (int)$p['producto_id'] ?></td>
