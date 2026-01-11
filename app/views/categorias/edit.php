@@ -40,7 +40,7 @@
             <input type="text"
                 name="nombre"
                 class="form-control"
-                value="<?= htmlspecialchars($categoria['nombre']) ?>"
+                value="<?= htmlspecialchars($categoria['nombre'] ?? '') ?>"
                 required>
         </div>
         <div class="mb-3">
