@@ -22,7 +22,7 @@ $options = [
 
 try {
     // Aquí creamos el objeto PDO en $pdo (nombre recomendado)
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    return new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
     http_response_code(500);
     echo 'Error de conexión a la base de datos: ' . htmlspecialchars($e->getMessage());

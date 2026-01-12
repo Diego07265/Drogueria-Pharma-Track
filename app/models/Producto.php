@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../../config/bd.php';
+require_once __DIR__ . '/../config/bd.php';
 
 class Producto
 {
@@ -15,8 +15,7 @@ class Producto
 
     public function __construct()
     {
-        global $pdo;
-        $this->pdo = $pdo;
+        $this->pdo = require __DIR__ . '/../config/bd.php';
     }
 
     public function listar(): array

@@ -34,7 +34,7 @@ if (!class_exists($controllerClass)) {
 $controller = new $controllerClass();
 
 // Acciones permitidas
-$accionesPermitidas = ['index', 'create', 'store', 'edit', 'update', 'delete'];
+$accionesPermitidas = ['index', 'create', 'store', 'edit', 'update', 'delete','login','logout'];
 
 // Ejecutar acción
 if (in_array($action, $accionesPermitidas) && method_exists($controller, $action)) {

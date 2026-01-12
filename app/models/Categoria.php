@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . "/../../config/bd.php";
+require __DIR__ . '/../config/bd.php';
 
 class Categoria
 {
@@ -10,13 +10,12 @@ class Categoria
 
     public function __construct()
     {
-        global $pdo;
-        $this->pdo = $pdo;
+        $this->pdo = require __DIR__ . '/../config/bd.php';
     }
 
     // Listar todas las categorías
 
-    public function listar(): array 
+    public function listar(): array
     {
         $stmt = $this->pdo->prepare("SELECT * FROM categoria ORDER BY nombre");
         $stmt->execute();
@@ -62,7 +61,7 @@ class Categoria
 
     // Eliminar una categoría
 
-    public function eliminar (int $id): void
+    public function eliminar(int $id): void
     {
         $stmt = $this->pdo->prepare("DELETE FROM categoria WHERE categoria_id = :id");
         $stmt->execute([':id' => $id]);
