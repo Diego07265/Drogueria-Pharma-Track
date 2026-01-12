@@ -10,4 +10,3 @@ $categorias = $categoriaModel->listar();
 echo '<pre>';
 var_dump($categorias);
 echo '</pre>';
-var_dump($categoriaModel);
