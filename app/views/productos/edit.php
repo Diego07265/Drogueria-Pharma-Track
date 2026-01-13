@@ -8,8 +8,8 @@ $proveedores = $proveedores ?? [];
 <head>
   <meta charset="utf-8">
   <title>Editar Producto</title>
-  <link rel="stylesheet" href="/pharma-track/css/bootstrap.min.css">
-  <script src="/pharma-track/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/pharma-track/assets/css/bootstrap.min.css">
+  <script src="/pharma-track/assets/js/bootstrap.bundle.min.js"></script>
   <style>
     .fondo {
       position: fixed;

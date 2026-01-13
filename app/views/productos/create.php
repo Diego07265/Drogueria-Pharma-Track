@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/pharma-track/css/bootstrap.min.css">
-    <script src="/pharma-track/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/pharma-track/assets/css/bootstrap.min.css">
+    <script src="/pharma-track/assets/js/bootstrap.bundle.min.js"></script>
 
     <title>Agregar Producto - Pharma Track</title>
     <style>
