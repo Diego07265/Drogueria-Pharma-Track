@@ -22,7 +22,7 @@
         }
 
         .logo {
-            width: 150px;            
+            width: 150px;
         }
     </style>
 </head>
@@ -40,8 +40,9 @@
                     <form method="post" action="/pharma-track/public/index.php?controller=auth&action=login">
 
                         <div class="mb-3">
-                            <label for="form-label"><strong>Usuario</strong></label>
+                            <label for="usuario"><strong>Usuario</strong></label>
                             <input
+                                id="usuario"
                                 type="text"
                                 name="usuario"
                                 class="form-control"
@@ -49,8 +50,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="form-label"><strong>Contraseña</strong></label>
+                            <label for="clave"><strong>Contraseña</strong></label>
                             <input
+                                id="clave"
                                 type="password"
                                 name="clave"
                                 class="form-control"
