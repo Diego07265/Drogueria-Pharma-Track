@@ -3,9 +3,14 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../models/Producto.php';
-
+require_once __DIR__ . '/../core/Auth.php';
 class ProductoController
+
 {
+    public function __construct()
+    {
+        Auth::check(); // Protección de rutas
+    }
     public function index(): void
     {
         $producto = new Producto();

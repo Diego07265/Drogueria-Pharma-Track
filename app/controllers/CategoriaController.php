@@ -3,9 +3,14 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../models/Categoria.php';
+require_once __DIR__ . '/../core/Auth.php';
 
 class CategoriaController
 {
+    public function __construct()
+    {
+        Auth::check(); // Protección de rutas
+    }
 
     //listar categorias
     public function index(): void
@@ -28,7 +33,7 @@ class CategoriaController
     public function store(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('location: /pharma-track/public/index.php?controller=categoria&action=index');
+            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
             exit;
         }
 
@@ -62,7 +67,7 @@ class CategoriaController
         $categoria = $categoriaModel->obtenerPorId($id);
 
         if (!$categoria) {
-            header('location: /pharma-track/public/index.php?controller=categoria&action=index');
+            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
             exit;
         }
         require_once __DIR__ . '/../views/categorias/edit.php';
@@ -73,7 +78,7 @@ class CategoriaController
     public function update(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('location: /pharma-track/public/index.php?controller=categoria&action=index');
+            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
             exit;
         }
 
@@ -90,7 +95,7 @@ class CategoriaController
         $categoria = new Categoria();
         $categoria->actualizar($datos['categoria_id'], $datos);
 
-        header('location: /pharma-track/public/index.php?controller=categoria&action=index');
+        header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
         exit;
     }
     //Eliminar categoria

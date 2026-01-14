@@ -16,9 +16,7 @@
 
         /* Caja blanca para que el contenido se lea */
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
+           padding: 0;
         }
 
         .logo {
