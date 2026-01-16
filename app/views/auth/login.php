@@ -31,7 +31,7 @@
         <div class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-3">
             <div class="card shadow-sm">
                 <div class="card-header text-center bg-primary text-white py-2">
-                    <img src="/pharma-track/img/Logo.png" alt="Pharma Track" class="logo mb-1" style="max-height: 100px;">
+                    <img src="/pharma-track/assets/img/Logo.png" alt="Pharma Track" class="logo mb-1" style="max-height: 100px;">
                 </div>
 
                 <div class="card-body">

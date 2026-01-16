@@ -35,13 +35,13 @@ $proveedores = $proveedores ?? [];
 </head>
 
 <body class="bg-light">
-  <img src="/pharma-track/img/26800.jpg" class="fondo" alt="Fondo">
+  <img src="/pharma-track/assets/img/26800.jpg" class="fondo" alt="Fondo">
 
   <!-- Header -->
   <nav class="navbar navbar-dark bg-primary shadow">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="/pharma-track/index.php">
-        <img src="/pharma-track/img/Logo.png" class="logo me-2" alt="Logo">
+        <img src="/pharma-track/assets/img/Logo.png" class="logo me-2" alt="Logo">
         <strong>Droguería - Gestión de Productos</strong>
       </a>
     </div>
