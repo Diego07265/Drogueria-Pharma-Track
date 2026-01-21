@@ -45,7 +45,7 @@ class AuthController
         ];
 
 
-        header('Location: index.php?controller=producto');
+        header('Location: /pharma-track/public/index.php?controller=dashboard&action=index');
         exit();
     }
 
