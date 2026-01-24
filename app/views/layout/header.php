@@ -35,25 +35,44 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
-            <span class="navbar-brand">
-                Pharma Track
-            </span>
 
-            <div class="d-flex align-items-center">
+            <a class="navbar-brand fw-bold" href="/pharma-track/public/index.php?controller=categoria&action=index">Pharma Track</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pharma-track/public/index.php?controller=categoria&action=index">Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pharma-track/public/index.php?controller=producto&action=index">Productos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pharma-track/public/index.php?controller=categoria&action=index">Categorias
+                        </a>
+                    </li>
+
+                </ul>
+
                 <?php if (isset($_SESSION['empleado'])): ?>
-                    <span class="text-white me-3">
-                        Usuario: <?= htmlspecialchars($_SESSION['empleado']['usuario']) ?>
+                    <span class="navbar-text text-white me-3">
+                        <?= htmlspecialchars($_SESSION['empleado']['usuario']) ?>
                     </span>
 
-                    <a href="/pharma-track/public/index.php?controller=auth&action=logout"
-                        class="btn btn-outline-light btn-sm">
+                    <a href="/pharma-track/public/index.php?controller=auth&action=logout" class="btn btn-outline-light btn-sm">
                         Cerrar sesión
                     </a>
                 <?php endif; ?>
+
             </div>
         </div>
-    </nav>
-    <!-- Contenedor principal -->
-    <div class="container mt-4">
