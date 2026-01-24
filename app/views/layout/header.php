@@ -38,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
 
-            <a class="navbar-brand fw-bold" href="/pharma-track/public/index.php?controller=categoria&action=index">Pharma Track</a>
+            <a class="navbar-brand fw-bold" href="/pharma-track/public/index.php?controller=dashboard&action=index">Pharma Track</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?controller=categoria&action=index">Dashboard
+                        <a class="nav-link" href="/pharma-track/public/index.php?controller=dashboard&action=index">Dashboard
                         </a>
                     </li>
 
@@ -76,3 +76,4 @@ if (session_status() === PHP_SESSION_NONE) {
 
             </div>
         </div>
+    </nav>

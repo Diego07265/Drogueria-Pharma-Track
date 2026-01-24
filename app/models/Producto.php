@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../config/bd.php';
 
+
 class Producto
 {
     private PDO $pdo;
@@ -88,5 +89,11 @@ class Producto
             ':id_proveedor' => $datos['id_proveedor'],
             ':id' => $id
         ]);
+    }
+    public function contar(): int
+    {
+        $stmt = $this->pdo->query("SELECT COUNT(*) as total FROM producto");
+
+        return (int) $stmt->fetchColumn();
     }
 }

@@ -11,7 +11,7 @@ class Categoria
     public function __construct()
     {
         $this->pdo = require __DIR__ . '/../config/bd.php';
-    }
+    }    
 
     // Listar todas las categorías
 
@@ -57,7 +57,7 @@ class Categoria
             'nombre' => $datos['nombre'],
             'descripcion' => $datos['descripcion']
         ]);
-    }
+    }    
 
     // Eliminar una categoría
 
@@ -65,5 +65,13 @@ class Categoria
     {
         $stmt = $this->pdo->prepare("DELETE FROM categoria WHERE categoria_id = :id");
         $stmt->execute([':id' => $id]);
+    }
+
+    // Contar el total de categorías
+     public function contar(): int
+    {
+        $stmt = $this->pdo->query("SELECT COUNT(*) as total FROM categoria");
+
+        return (int) $stmt->fetchColumn();
     }
 }
