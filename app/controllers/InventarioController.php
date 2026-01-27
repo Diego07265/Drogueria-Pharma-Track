@@ -14,16 +14,7 @@ class InventarioController
     public function index(): void  //vista inventario
     {
         $productoModel = new Producto();
-        $productos = $productoModel->listar();
-
-        $totalProductos = count($productos);
-
-        // Stock bajo (ej: <=10)
-        $stockBajo = 0;
-        foreach ($productos as $p){
-            if($p['stock'] <= 10)
-                $stockBajo++;
-        }
+        $productos = $productoModel->listar();               
         require_once __DIR__ . '/../views/inventario/index.php';
     }
 }

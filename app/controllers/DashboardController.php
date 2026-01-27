@@ -30,9 +30,7 @@ class DashboardController
         if ((int)$p['stock']<=10){
             $stockBajo ++;
         }
-    }
-
-    
+    }   
 
     require __DIR__ . '/../views/dashboard/index.php';
     }
