@@ -21,7 +21,7 @@ require_once __DIR__ . '/../layout/header.php';
         <div class="col-md-4">
         <div class="card shadow-sm text-center p-4">
             <h4>Categorias</h4>
-            <h2><?= $totalCattegorias ?></h2>
+            <h2><?= $totalCategorias ?></h2>
             <p>Gestionar categorias</p>
             <a href="/pharma-track/public/index.php?controller=categoria&action=index" class="btn btn-success">
                 Entrar
@@ -31,10 +31,11 @@ require_once __DIR__ . '/../layout/header.php';
 
     <div class="col-md-4">
         <div class="card shadow-sm text-center p-4">
-            <h4>Invetario</h4>
-            <p>Control de stock</p>
-            <a href="#" class="btn btn-warning">
-                Proximante
+            <h4>Inventario</h4>
+            <p class="fw-bold">Stock bajo<?= $stockBajo ?></p>
+            <p>Productos con stock bajo</p>
+            <a href="/pharma-track/public/index.php?controller=inventario&action=index" class="btn btn-warning">
+                Entrar
             </a>
         </div>
     </div>

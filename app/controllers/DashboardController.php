@@ -17,8 +17,22 @@ class DashboardController
     $productoModel = new Producto();
     $categoriaModel = new Categoria();
     
-    $totalProductos = $productoModel->contar();
-    $totalCattegorias = $categoriaModel->contar();
+    // Obtener Listas 
+    $productos = $productoModel->listar();
+
+    // totales
+    $totalProductos = count($productos);
+    $totalCategorias = $categoriaModel->contar();
+
+    //Stock Bajo
+    $stockBajo = 0;
+    foreach ($productos as $p){
+        if ((int)$p['stock']<=10){
+            $stockBajo ++;
+        }
+    }
+
+    
 
     require __DIR__ . '/../views/dashboard/index.php';
     }

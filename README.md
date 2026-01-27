@@ -1,10 +1,10 @@
 Pharma-Track 💊  
-Sistema básico de gestión para una droguería
+Sistema de gestión integral para una droguería
 
 📌 Descripción del proyecto
 
-Pharma-Track es un proyecto desarrollado en PHP que permite gestionar productos de una droguería.  
-Actualmente cuenta con un *CRUD de productos* (crear, listar, editar y eliminar), aplicando una estructura basada en el *patrón MVC (Modelo–Vista–Controlador)*.
+Pharma-Track es un proyecto desarrollado en PHP que permite gestionar productos, categorías y empleados de una droguería.  
+Actualmente cuenta con múltiples módulos incluyendo *CRUD de productos*, *CRUD de categorías*, *sistema de autenticación* y *dashboard*, aplicando una estructura basada en el *patrón MVC (Modelo–Vista–Controlador)*.
 
 Este proyecto hace parte de un proceso de aprendizaje en **Análisis y Desarrollo de Software**, enfocado en buenas prácticas, orden del código y comprensión de la arquitectura.
 
@@ -24,21 +24,23 @@ El proyecto está organizado siguiendo el patrón *MVC*, lo que permite separar 
 pharma-track/
 │
 ├── app/
-│ ├── controllers/ # Controladores (ProductoController)
-│ ├── models/ # Modelos (Producto)
-│ ├── views/ # Vistas (CRUD de productos)
-│ ├── config/ # Configuración interna
+│ ├── controllers/      # Controladores (ProductoController, CategoriaController, DashboardController, AuthController)
+│ ├── models/           # Modelos (Producto, Categoria, Empleado)
+│ ├── views/            # Vistas (productos, categorías, dashboard, autenticación)
+│ ├── core/             # Clases core (Auth.php)
+│ ├── config/           # Configuración interna
+│ └── scripts/          # Scripts de prueba
 │
 ├── public/
-│ ├── index.php # Front controller
+│ └── index.php         # Front controller
 │
-├── config/
-│ └── bd.php # Conexión a la base de datos
+├── assets/
+│ ├── css/              # Estilos (Bootstrap)
+│ ├── js/               # JavaScript
+│ └── img/              # Imágenes del proyecto
 │
-├── css/ # Estilos (Bootstrap)
-├── js/ # JavaScript
-├── img/ # Imágenes del proyecto
-├── sql/ # Script de la base de datos
+├── sql/                # Scripts de base de datos
+├── _archivo/           # Archivos legacy (referencia)
 │
 └── README.md
 
@@ -48,12 +50,32 @@ Algunos archivos legacy se conservaron solo como referencia.
 ---
 
 ## ⚙️ Funcionalidades actuales
+**Módulo de Autenticación:**
+- Login de usuarios
+- Gestión de sesiones
+- Control de acceso
+
+**Módulo de Productos:**
 - Listar productos
 - Crear productos
 - Editar productos
 - Eliminar productos
-- Validaciones básicas de formularios
-- Interfaz con Bootstrap
+
+**Módulo de Categorías:**
+- Listar categorías
+- Crear categorías
+- Editar categorías
+- Eliminar categorías
+
+**Módulo de Dashboard:**
+- Vista general del sistema
+- Datos consolidados
+
+**Características generales:**
+- Validaciones de formularios
+- Interfaz responsive con Bootstrap
+- Estructura MVC bien organizada
+- Separación clara de responsabilidades
 
 ---
 
@@ -69,26 +91,37 @@ Algunos archivos legacy se conservaron solo como referencia.
 ---
 
 ## 🗄️ Base de datos
-El archivo SQL se encuentra en la carpeta:
+El archivo SQL se encuentra en:
 
 /sql/drogueriapharmatrack.sql
 
-Incluye la estructura necesaria para la tabla de productos.
+Incluye las tablas para productos, categorías y empleados.
 
 ---
 
 ## 🚀 Estado del proyecto
-🔧 En desarrollo  
-Pendiente por implementar:
-- Categorías
-- Proveedores
-- Validaciones avanzadas
-- Mejoras de seguridad
-- 
+✅ En desarrollo activo
+
+**Implementado:**
+- Autenticación de usuarios
+- CRUD de productos
+- CRUD de categorías
+- Dashboard
+- Gestión de empleados
+
+**Pendiente por implementar:**
+- Módulo de proveedores
+- Validaciones de seguridad avanzadas
+- Sistema de reportes
+- Gestión de inventario optimizada
+- Tests automatizados
+
+---
+
 ✍️ Autor
 
-Diego Ospina
-Proyecto académico – Desarrollo de software
+Diego Ospina  
+Proyecto académico – Análisis y Desarrollo de Software
 
 
 
