@@ -59,7 +59,7 @@
             </div>
 
             <div class="card-body">
-                <form action="index.php?action=store" method="post">
+                <form action="/pharma-track/public/index.php?action=store" method="post">
 
 
 
@@ -72,7 +72,16 @@
 
                         <div class="col-md-6">
                             <label class="form-label">Categoría</label>
-                            <input type="number" name="categoria_id" class="form-control" required>
+                            <select name="categoria_id" class="form-control" required>
+                                <option value="">Seleccione categoría</option>
+                                <option value="1">Medicamentos</option>
+                                <option value="2">Higiene</option>
+                                <option value="3">Suplementos</option>
+                                <option value="4">Analgésicos</option>
+                                <option value="5">Antibióticos</option>
+                                <option value="6">Vitaminas</option>
+                                <option value="7">Antigripales</option>
+                            </select>
                         </div>
                     </div>
 
@@ -96,7 +105,13 @@
 
                         <div class="col-md-6">
                             <label class="form-label">ID Proveedor</label>
-                            <input type="number" name="id_proveedor" class="form-control">
+                            <select name="id_proveedor" class="form-control">
+                                <option value="">Seleccione proveedor</option>
+                                <option value="1">Laboratorios ColSalud</option>
+                                <option value="2">Distribuidora FarmaPlus</option>
+                                <option value="3">Distribuidora San José</option>
+                                <option value="4">Farmacéutica Andina</option>
+                            </select>
                         </div>
                     </div>
 

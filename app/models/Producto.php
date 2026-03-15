@@ -34,7 +34,7 @@ class Producto
             (:nombre, :categoria_id, :precio, :stock, :fecha_vencimiento, :requiere_receta, :id_proveedor)";
 
         $stmt = $this->pdo->prepare($sql);
-
+        
         $stmt->execute([
             ':nombre' => $datos['nombre'],
             ':categoria_id' => $datos['categoria_id'],

@@ -33,12 +33,12 @@ class ProductoController
 
         $datos = [
             'nombre' => trim($_POST['nombre'] ?? ''),
-            'categoria_id' => 0,
+            'categoria_id' => (int)($_POST['categoria_id'] ?? 0),
             'precio' => (float) ($_POST['precio'] ?? 0),
             'stock' => (int) ($_POST['stock'] ?? 0),
             'fecha_vencimiento' => $_POST['fecha_vencimiento'] ?? null,
             'requiere_receta' => isset($_POST['requiere_receta']) ? 1 : 0,
-            'id_proveedor' => 0,
+            'id_proveedor' => (int) ($_POST['id_proveedor'] ?? 0),
         ];
 
         if (
