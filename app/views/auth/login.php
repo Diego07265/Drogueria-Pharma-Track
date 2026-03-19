@@ -16,7 +16,7 @@
 
         /* Caja blanca para que el contenido se lea */
         .container {
-           padding: 0;
+            padding: 0;
         }
 
         .logo {
@@ -62,7 +62,11 @@
                                 Iniciar Sesión
                             </button>
                         </div>
-
+                        <?php if (isset($_GET['error'])): ?>
+                            <div class="alert alert-danger mt-3">
+                                Error: Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
+                            </div>
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>
