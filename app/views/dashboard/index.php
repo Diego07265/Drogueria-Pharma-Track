@@ -12,7 +12,7 @@ require_once __DIR__ . '/../layout/header.php';
                 <h4>Productos</h4>
                 <h2><?= $totalProductos ?></h2>
                 <p>Gestionar productos</p>
-                <a href="/pharma-track/public/index.php?controller=producto&action=index" class="btn btn-primary">
+                <a href="/pharma-track/public/index.php?url=/productos" class="btn btn-primary">
                     Entrar
                 </a>
             </div>
@@ -23,7 +23,7 @@ require_once __DIR__ . '/../layout/header.php';
             <h4>Categorias</h4>
             <h2><?= $totalCategorias ?></h2>
             <p>Gestionar categorias</p>
-            <a href="/pharma-track/public/index.php?controller=categoria&action=index" class="btn btn-success">
+            <a href="/pharma-track/public/index.php?url=/categorias" class="btn btn-success">
                 Entrar
             </a>
         </div>
@@ -34,7 +34,7 @@ require_once __DIR__ . '/../layout/header.php';
             <h4>Inventario</h4>
             <p class="fw-bold">Stock bajo<?= $stockBajo ?></p>
             <p>Productos con stock bajo</p>
-            <a href="/pharma-track/public/index.php?controller=inventario&action=index" class="btn btn-warning">
+            <a href="/pharma-track/public/index.php?url=/inventario" class="btn btn-warning">
                 Entrar
             </a>
         </div>

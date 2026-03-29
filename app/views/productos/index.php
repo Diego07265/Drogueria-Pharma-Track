@@ -23,7 +23,7 @@ require_once __DIR__ . '/../layout/header.php';
     </div>
 <?php endif; ?>
 
-<a href="/pharma-track/public/index.php?controller=producto&action=create"
+<a href="/pharma-track/public/index.php?url=/productos/create"
    class="btn btn-primary mb-3">
     Nuevo Producto
 </a>
@@ -45,10 +45,10 @@ require_once __DIR__ . '/../layout/header.php';
                 <td><?= htmlspecialchars($p['nombre']) ?></td>
                 <td>$ <?= number_format((float)$p['precio'], 2) ?></td>
                 <td class="text-center">
-                    <a href="/pharma-track/public/index.php?controller=producto&action=edit&id=<?= (int)$p['producto_id'] ?>"
+                    <a href="/pharma-track/public/index.php?url=/productos/<?= (int)$p['producto_id'] ?>/edit"
                        class="btn btn-warning btn-sm">Editar</a>
 
-                    <a href="/pharma-track/public/index.php?controller=producto&action=delete&id=<?= (int)$p['producto_id'] ?>"
+                    <a href="/pharma-track/public/index.php?url=/productos/<?= (int)$p['producto_id'] ?>/delete"
                        class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Seguro que desea eliminar este producto?')">
                        Eliminar

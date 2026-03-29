@@ -33,7 +33,7 @@ class CategoriaController
     public function store(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
+            header('Location: /pharma-track/public/index.php?url=/categorias');
             exit;
         }
 
@@ -49,25 +49,25 @@ class CategoriaController
         $categoria = new Categoria();
         $categoria->guardar($datos);
 
-        header('Location: /pharma-track/public/index.php?controller=categoria&action=index&msg=ok');
+        header('Location: /pharma-track/public/index.php?url=/categorias&msg=ok');
         exit;
     }
 
     // Mostrar formulario para editar categoria
 
-    public function edit(): void
+    public function edit(string $id): void
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
+        if (!is_numeric($id)) {
+            header('Location: /pharma-track/public/index.php?url=/categorias');
             exit;
         }
-        $id = (int)$_GET['id'];
+        $id = (int)$id;
 
         $categoriaModel = new Categoria();
         $categoria = $categoriaModel->obtenerPorId($id);
 
         if (!$categoria) {
-            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
+            header('Location: /pharma-track/public/index.php?url=/categorias');
             exit;
         }
         require_once __DIR__ . '/../views/categorias/edit.php';
@@ -75,15 +75,15 @@ class CategoriaController
 
     //Actualizar categoria
 
-    public function update(): void
+    public function update(string $id): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
+            header('Location: /pharma-track/public/index.php?url=/categorias');
             exit;
         }
 
         $datos = [
-            'categoria_id' => (int) ($_POST['categoria_id'] ?? 0),
+            'categoria_id' => (int) $id,
             'nombre' => trim($_POST['nombre'] ?? ''),
             'descripcion' => trim($_POST['descripcion'] ?? ''),
         ];
@@ -95,24 +95,24 @@ class CategoriaController
         $categoria = new Categoria();
         $categoria->actualizar($datos['categoria_id'], $datos);
 
-        header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
+        header('Location: /pharma-track/public/index.php?url=/categorias&msg=updated');
         exit;
     }
     //Eliminar categoria
 
-    public function delete(): void
+    public function delete(string $id): void
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            header('Location: /pharma-track/public/index.php?controller=categoria&action=index');
+        if (!is_numeric($id)) {
+            header('Location: /pharma-track/public/index.php?url=/categorias');
             exit;
         }
 
-        $id = (int) $_GET['id'];
+        $id = (int) $id;
 
         $categoria = new Categoria();
         $categoria->eliminar($id);
 
-        header('Location: /pharma-track/public/index.php?controller=categoria&action=index&msg=deleted');
+        header('Location: /pharma-track/public/index.php?url=/categorias&msg=deleted');
         exit;
     }
 }

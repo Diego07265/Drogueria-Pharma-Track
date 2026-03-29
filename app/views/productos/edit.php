@@ -55,7 +55,7 @@ $proveedores = $proveedores ?? [];
       </div>
 
       <div class="card-body">
-        <form action="/pharma-track/public/index.php?controller=producto&action=update" method="post">
+        <form action="/pharma-track/public/index.php?url=/productos/<?= (int)$producto['producto_id'] ?>/update" method="post">
           <input type="hidden" name="producto_id" value="<?= (int)$producto['producto_id'] ?>">
 
           <div class="row mb-3">
@@ -96,7 +96,7 @@ $proveedores = $proveedores ?? [];
             </div>
             <div class="col-md-6">
               <label class="form-label">Proveedor *</label>
-              <select name="id_proveedor" class="form-select" >
+              <select name="id_proveedor" class="form-select">
                 <option value="">-- Seleccionar Proveedor --</option>
                 <?php foreach ($proveedores as $proveedor): ?>
                   <option
@@ -115,7 +115,7 @@ $proveedores = $proveedores ?? [];
           </div>
 
           <div class="d-flex justify-content-between">
-            <a href="/pharma-track/public/index.php?controller=producto&action=index"
+            <a href="/pharma-track/public/index.php?url=/productos"
               class="btn btn-secondary">⬅ Cancelar</a>
             <button type="submit"
               class="btn btn-primary">Guardar Cambios</button>

@@ -13,7 +13,7 @@ class AuthController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: index.php?controller=auth');
+            require_once __DIR__ . '/../views/auth/login.php';
             exit();
         }
 
@@ -21,7 +21,8 @@ class AuthController
         $clave = $_POST['clave'] ?? '';
 
         if ($usuario === '' || $clave === '') {
-            header('Location: index.php?controller=auth&error=1');
+            $error = true;
+            require_once __DIR__ . '/../views/auth/login.php';
             exit();
         }
 
@@ -31,7 +32,8 @@ class AuthController
         //Usuario o clave incorrectos
 
         if (!$empleado || !password_verify($clave, $empleado['clave'])) {
-            header('Location: index.php?controller=auth&error=1');
+            $error = true;
+            require_once __DIR__ . '/../views/auth/login.php';
             exit();
         }
 
@@ -45,7 +47,7 @@ class AuthController
         ];
 
 
-        header('Location: /pharma-track/public/index.php?controller=dashboard&action=index');
+        header('Location: /pharma-track/public/index.php?url=/dashboard');
         exit();
     }
 
@@ -55,7 +57,7 @@ class AuthController
         // Aquí iría la lógica para cerrar sesión
         session_start();
         session_destroy();
-        header("Location: index.php?controller=auth");
+        header("Location: /pharma-track/public/index.php?url=/login");
         exit();
     }
 }

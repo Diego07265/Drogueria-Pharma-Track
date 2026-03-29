@@ -38,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
 
-            <a class="navbar-brand fw-bold" href="/pharma-track/public/index.php?controller=dashboard&action=index">Pharma Track</a>
+            <a class="navbar-brand fw-bold" href="/pharma-track/public/index.php?url=/dashboard">Pharma Track</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
@@ -48,17 +48,17 @@ if (session_status() === PHP_SESSION_NONE) {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?controller=dashboard&action=index">Dashboard
+                        <a class="nav-link" href="/pharma-track/public/index.php?url=/dashboard">Dashboard
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?controller=producto&action=index">Productos
+                        <a class="nav-link" href="/pharma-track/public/index.php?url=/productos">Productos
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?controller=categoria&action=index">Categorias
+                        <a class="nav-link" href="/pharma-track/public/index.php?url=/categorias">Categorias
                         </a>
                     </li>
 
@@ -69,7 +69,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <?= htmlspecialchars($_SESSION['empleado']['usuario']) ?>
                     </span>
 
-                    <a href="/pharma-track/public/index.php?controller=auth&action=logout" class="btn btn-outline-light btn-sm">
+                    <a href="/pharma-track/public/index.php?url=/logout" class="btn btn-outline-light btn-sm">
                         Cerrar sesión
                     </a>
                 <?php endif; ?>

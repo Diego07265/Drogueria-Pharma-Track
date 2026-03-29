@@ -32,7 +32,7 @@
 
     <h2>Editar Categoría</h2>
 
-    <form method="post" action="/pharma-track/public/index.php?controller=categoria&action=update">
+    <form method="post" action="/pharma-track/public/index.php?url=/categorias/<?= (int)$categoria['categoria_id'] ?>/update">
         <input type="hidden" name="categoria_id" value="<?= (int)$categoria['categoria_id'] ?>">
 
         <div class="mb-3">
@@ -47,7 +47,7 @@
             <label class="form-label">Descripción</label>
             <textarea name="descripcion" class="form-control"><?= htmlspecialchars($categoria['descripcion'] ?? "") ?></textarea>
         </div>
-        <a href="/pharma-track/public/index.php?controller=categoria&action=index" class="btn btn-secondary">
+        <a href="/pharma-track/public/index.php?url=/categorias" class="btn btn-secondary">
             Cancelar
         </a>
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>

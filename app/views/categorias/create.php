@@ -32,7 +32,7 @@
 
     <h2>Nueva Categoría</h2>
 
-    <form method="post" action="/pharma-track/public/index.php?controller=categoria&action=store">
+    <form method="post" action="/pharma-track/public/index.php?url=/categorias/store">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -42,7 +42,7 @@
             <label for="descripcion" class="form-label">Descripción</label>
             <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
         </div>
-        <a href="/pharma-track/public/index.php?controller=categoria&action=index" class="btn btn-secondary">
+        <a href="/pharma-track/public/index.php?url=/categorias" class="btn btn-secondary">
             Cancelar
         </a>
 

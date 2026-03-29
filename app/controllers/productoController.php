@@ -27,7 +27,7 @@ class ProductoController
     public function store(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+            header('Location: /pharma-track/public/index.php?url=/productos');
             exit;
         }
 
@@ -52,39 +52,39 @@ class ProductoController
         $producto = new Producto();
         $producto->guardar($datos);
 
-        header('Location: /pharma-track/public/index.php?controller=producto&action=index&msg=ok');
+        header('Location: /pharma-track/public/index.php?url=/productos&msg=ok');
         exit;
     }
 
-    public function edit(): void
+    public function edit(string $id): void
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+        if (!is_numeric($id)) {
+            header('Location: /pharma-track/public/index.php?url=/productos');
             exit;
         }
 
-        $id = (int) $_GET['id'];
+        $id = (int) $id;
 
         $productoModel = new Producto();
         $producto = $productoModel->obtenerPorId($id);
 
         if (!$producto) {
-            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+            header('Location: /pharma-track/public/index.php?url=/productos');
             exit;
         }
 
         require_once __DIR__ . '/../views/productos/edit.php';
     }
 
-    public function update(): void
+    public function update(string $id): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+            header('Location: /pharma-track/public/index.php?url=/productos');
             exit;
         }
 
         $datos = [
-            'producto_id' => (int) ($_POST['producto_id'] ?? 0),
+            'producto_id' => (int) $id,
             'nombre' => trim($_POST['nombre'] ?? ''),
             'categoria_id' => null,
             'precio' => (float) ($_POST['precio'] ?? 0),
@@ -106,23 +106,23 @@ class ProductoController
         $producto = new Producto();
         $producto->actualizar($datos['producto_id'], $datos);
 
-        header('Location: /pharma-track/public/index.php?controller=producto&action=index&msg=updated');
+        header('Location: /pharma-track/public/index.php?url=/productos&msg=updated');
         exit;
     }
 
-    public function delete(): void
+    public function delete(string $id): void
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            header('Location: /pharma-track/public/index.php?controller=producto&action=index');
+        if (!is_numeric($id)) {
+            header('Location: /pharma-track/public/index.php?url=/productos');
             exit;
         }
 
-        $id = (int) $_GET['id'];
+        $id = (int) $id;
 
         $producto = new Producto();
         $producto->eliminar($id);
 
-        header('Location: /pharma-track/public/index.php?controller=producto&action=index&msg=deleted');
+        header('Location: /pharma-track/public/index.php?url=/productos&msg=deleted');
         exit;
     }
 }

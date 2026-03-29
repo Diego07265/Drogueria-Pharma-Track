@@ -59,7 +59,7 @@
             </div>
 
             <div class="card-body">
-                <form action="/pharma-track/public/index.php?action=store" method="post">
+                <form action="?url=/productos/store" method="post">
 
 
 
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="index.php" class="btn btn-secondary">
+                        <a href="/pharma-track/public/index.php?url=/productos" class="btn btn-secondary">
                             ⬅ Cancelar
                         </a>
 

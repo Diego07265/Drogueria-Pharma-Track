@@ -5,7 +5,7 @@ require_once __DIR__ . '/../layout/header.php';
 
 <h2 class="mb-3">Listado de Categorías</h2>
 
-<a href="/pharma-track/public/index.php?controller=categoria&action=create"
+<a href="/pharma-track/public/index.php?url=/categorias/create"
     class="btn btn-primary mb-3">
     Nueva Categoría
 </a>
@@ -43,12 +43,12 @@ require_once __DIR__ . '/../layout/header.php';
                     <td><?= htmlspecialchars($c['descripcion'] ?? '') ?></td>
                     <td>
                         <a class="btn btn-warning btn-sm"
-                            href="/pharma-track/public/index.php?controller=categoria&action=edit&id=<?= (int)$c['categoria_id'] ?>">
+                            href="/pharma-track/public/index.php?url=/categorias/<?= (int)$c['categoria_id'] ?>/edit">
                             Editar
                         </a>
 
                         <a class="btn btn-danger btn-sm"
-                            href="/pharma-track/public/index.php?controller=categoria&action=delete&id=<?= (int)$c['categoria_id'] ?>"
+                            href="/pharma-track/public/index.php?url=/categorias/<?= (int)$c['categoria_id'] ?>/delete"
                             onclick="return confirm('¿Eliminar esta categoría?')">
                             Eliminar
                         </a>
