@@ -1,0 +1,76 @@
+Listado de rutas de carpetas para el volumen Windows
+El número de serie del volumen es FAAD-BD70
+C:.
+¦   estructura.txt
+¦   README.md
+¦   
++---.vscode
+¦       settings.json
+¦       
++---app
+¦   +---config
+¦   ¦       bd.php
+¦   ¦       
+¦   +---controllers
+¦   ¦       AuthController.php
+¦   ¦       CategoriaController.php
+¦   ¦       DashboardController.php
+¦   ¦       InventarioController.php
+¦   ¦       ProductoController.php
+¦   ¦       
+¦   +---core
+¦   ¦       Auth.php
+¦   ¦       
+¦   +---models
+¦   ¦       Categoria.php
+¦   ¦       Empleado.php
+¦   ¦       Producto.php
+¦   ¦       
+¦   +---routes
+¦   ¦       web.php
+¦   ¦       
+¦   +---scripts
+¦   ¦       test_categoria.php
+¦   ¦       
+¦   +---views
+¦       +---auth
+¦       ¦       login.php
+¦       ¦       
+¦       +---categorias
+¦       ¦       create.php
+¦       ¦       edit.php
+¦       ¦       index.php
+¦       ¦       
+¦       +---dashboard
+¦       ¦       index.php
+¦       ¦       
+¦       +---inventario
+¦       ¦       index.php
+¦       ¦       
+¦       +---layout
+¦       ¦       footer.php
+¦       ¦       header.php
+¦       ¦       
+¦       +---productos
+¦               create.php
+¦               edit.php
+¦               index.php
+¦               
++---assets
+¦   +---css
+¦   ¦       bootstrap.min.css
+¦   ¦       
+¦   +---img
+¦   ¦       26800.jpg
+¦   ¦       Logo.png
+¦   ¦       
+¦   +---js
+¦           bootstrap.bundle.min.js
+¦           bootstrap.min.js
+¦           
++---public
+¦       index.php
+¦       
++---sql
+        drogueriapharmatrack.sql
+        

@@ -14,7 +14,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Caja blanca para que el contenido se lea */
         .container {
             padding: 0;
         }
@@ -26,7 +25,6 @@
 </head>
 
 <body>
-    <!-- Login Page -->
     <div class="container vh-100 d-flex align-items-center justify-content-center" id="login">
         <div class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-3">
             <div class="card shadow-sm">
@@ -35,7 +33,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="post" action="/pharma-track/public/index.php?controller=auth&action=login">
+                    <form method="POST" action="/pharma-track/public/index.php?url=/login/submit">
 
                         <div class="mb-3">
                             <label for="usuario"><strong>Usuario</strong></label>
@@ -62,11 +60,13 @@
                                 Iniciar Sesión
                             </button>
                         </div>
-                        <?php if (isset($_GET['error'])): ?>
+
+                        <?php if (isset($error) && $error): ?>
                             <div class="alert alert-danger mt-3">
-                                Error: Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
+                                Usuario o contraseña incorrectos.
                             </div>
                         <?php endif; ?>
+
                     </form>
                 </div>
             </div>

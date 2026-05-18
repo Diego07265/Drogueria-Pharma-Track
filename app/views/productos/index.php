@@ -12,6 +12,9 @@ require_once __DIR__ . '/../layout/header.php';
             case 'ok':
                 echo "Producto creado correctamente";
                 break;
+            case 'updated':
+                echo "Producto actualizado correctamente";
+                break;
             case 'deleted':
                 echo "Producto eliminado correctamente";
                 break;
@@ -23,8 +26,7 @@ require_once __DIR__ . '/../layout/header.php';
     </div>
 <?php endif; ?>
 
-<a href="/pharma-track/public/index.php?url=/productos/create"
-   class="btn btn-primary mb-3">
+<a href="<?= BASE_URL ?>/productos/create" class="btn btn-primary mb-3">
     Nuevo Producto
 </a>
 
@@ -45,14 +47,15 @@ require_once __DIR__ . '/../layout/header.php';
                 <td><?= htmlspecialchars($p['nombre']) ?></td>
                 <td>$ <?= number_format((float)$p['precio'], 2) ?></td>
                 <td class="text-center">
-                    <a href="/pharma-track/public/index.php?url=/productos/<?= (int)$p['producto_id'] ?>/edit"
+                    <a href="<?= BASE_URL ?>/productos/<?= (int)$p['producto_id'] ?>/edit"
                        class="btn btn-warning btn-sm">Editar</a>
 
-                    <a href="/pharma-track/public/index.php?url=/productos/<?= (int)$p['producto_id'] ?>/delete"
-                       class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Seguro que desea eliminar este producto?')">
-                       Eliminar
-                    </a>
+                    <form method="POST"
+                          action="<?= BASE_URL ?>/productos/<?= (int)$p['producto_id'] ?>/delete"
+                          style="display:inline-block"
+                          onsubmit="return confirm('¿Seguro que desea eliminar este producto?')">
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>

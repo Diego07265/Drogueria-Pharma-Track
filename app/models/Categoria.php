@@ -26,7 +26,7 @@ class Categoria
 
     public function obtenerPorId(int $id): ?array
     {
-        $stmt = $this->pdo->prepare("SELECT *FROM categoria WHERE categoria_id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM categoria WHERE categoria_id = :id");
         $stmt->execute([':id' => $id]);
 
         $categoria = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -41,23 +41,23 @@ class Categoria
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute(['nombre' => $datos['nombre'], 'descripcion' => $datos['descripcion']]);
+        $stmt->execute([':nombre' => $datos['nombre'], ':descripcion' => $datos['descripcion']]);
     }
 
     // Actualizar una categoría existente
 
-    public function actualizar(int $id, array $datos): void
-    {
-        $sql = "UPDATE categoria SET nombre = :nombre, descripcion = :descripcion WHERE categoria_id = :id";
+public function actualizar(int $id, array $datos): void
+{
+    $sql = "UPDATE categoria SET nombre = :nombre, descripcion = :descripcion WHERE categoria_id = :id";
 
-        $stmt = $this->pdo->prepare($sql);
+    $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute([
-            'id' => $id,
-            'nombre' => $datos['nombre'],
-            'descripcion' => $datos['descripcion']
-        ]);
-    }    
+    $stmt->execute([
+        ':id'          => $id,
+        ':nombre'      => $datos['nombre'],
+        ':descripcion' => $datos['descripcion']
+    ]);
+}  
 
     // Eliminar una categoría
 

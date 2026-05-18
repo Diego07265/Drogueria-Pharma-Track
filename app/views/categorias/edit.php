@@ -1,59 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+require_once __DIR__ . '/../layout/header.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Categoría</title>
-    <link rel="stylesheet" href="/pharma-track/assets/css/bootstrap.min.css">
-    <style>
-        body {
-            min-height: 100vh;
-            background-image: url("/pharma-track/assets/img/26800.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+<h2 class="mb-3">Editar Categoría</h2>
 
-        /* Caja blanca para que el contenido se lea */
-        .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-        }
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form method="POST" action="<?= BASE_URL ?>/categorias/<?= (int)$categoria['categoria_id'] ?>/update">
+            <input type="hidden" name="categoria_id" value="<?= (int)$categoria['categoria_id'] ?>">
 
-        .logo {
-            width: 150px;
-        }
-    </style>
-</head>
+            <div class="mb-3">
+                <label class="form-label">Nombre *</label>
+                <input type="text"
+                    name="nombre"
+                    class="form-control"
+                    value="<?= htmlspecialchars($categoria['nombre'] ?? '') ?>"
+                    required>
+            </div>
 
-<body class="container mt-4">
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea name="descripcion" class="form-control"><?= htmlspecialchars($categoria['descripcion'] ?? '') ?></textarea>
+            </div>
 
-    <h2>Editar Categoría</h2>
+            <div class="d-flex justify-content-between">
+                <a href="<?= BASE_URL ?>/categorias" class="btn btn-secondary">
+                    ⬅ Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <form method="post" action="/pharma-track/public/index.php?url=/categorias/<?= (int)$categoria['categoria_id'] ?>/update">
-        <input type="hidden" name="categoria_id" value="<?= (int)$categoria['categoria_id'] ?>">
-
-        <div class="mb-3">
-            <label class="form-label">nombre *</label>
-            <input type="text"
-                name="nombre"
-                class="form-control"
-                value="<?= htmlspecialchars($categoria['nombre'] ?? '') ?>"
-                required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Descripción</label>
-            <textarea name="descripcion" class="form-control"><?= htmlspecialchars($categoria['descripcion'] ?? "") ?></textarea>
-        </div>
-        <a href="/pharma-track/public/index.php?url=/categorias" class="btn btn-secondary">
-            Cancelar
-        </a>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </form>
-
-</body>
-
-
-</html>
+<?php require_once __DIR__ . '/../layout/footer.php'; ?>

@@ -1,7 +1,15 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// Solo mostrar errores en localhost
+if ($_SERVER['SERVER_NAME'] === 'localhost') {
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+} else {
+    ini_set('display_errors', 0);
+}
+
+// URL base del proyecto — cambia esto si mueves la carpeta
+define('BASE_URL', '/pharma-track/public/index.php?url=');
 
 // Cargar Rutas
 $routes = require __DIR__ . '/../app/routes/web.php';
@@ -20,10 +28,8 @@ $params = [];
 
 // Buscar la ruta en las rutas definidas
 foreach ($routes as $pattern => $route) {
-    // Usar regex para encontrar coincidencias
     if (preg_match($pattern, $url, $matches)) {
         $matchedRoute = $route;
-        // Los parámetros capturados están en $matches (sin incluir la coincidencia completa)
         $params = array_slice($matches, 1);
         break;
     }
@@ -31,39 +37,44 @@ foreach ($routes as $pattern => $route) {
 
 // Si se encontró la ruta
 if ($matchedRoute) {
+
+    // Validar método HTTP si la ruta lo especifica
+    if (isset($matchedRoute[2]) && $_SERVER['REQUEST_METHOD'] !== $matchedRoute[2]) {
+        http_response_code(405);
+        die("405 - Método no permitido");
+    }
+
     $controllerClass = $matchedRoute[0];
     $action = $matchedRoute[1];
-    
+
     $controllerFile = __DIR__ . '/../app/controllers/' . $controllerClass . '.php';
 
-    // Validar archivo
     if (!file_exists($controllerFile)) {
+        http_response_code(404);
         die("404 - Controlador no encontrado");
     }
 
     require_once $controllerFile;
 
-    // Validar clase 
     if (!class_exists($controllerClass)) {
+        http_response_code(404);
         die("404 - Clase no encontrada");
     }
 
     $controller = new $controllerClass();
 
-    // Validar método
     if (!method_exists($controller, $action)) {
+        http_response_code(404);
         die("404 - Método no válido");
     }
 
-    // Ejecutar con parámetros
     if (!empty($params)) {
         call_user_func_array([$controller, $action], $params);
     } else {
         $controller->$action();
     }
+
 } else {
+    http_response_code(404);
     die("404 - Página no encontrada");
 }
-
-
-

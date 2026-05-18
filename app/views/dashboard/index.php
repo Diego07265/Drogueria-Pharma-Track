@@ -2,46 +2,46 @@
 require_once __DIR__ . '/../layout/header.php';
 ?>
 
-<div class="container mt-5">
+<div class="container d-flex flex-column justify-content-center" style="min-height: calc(100vh - 56px);background: transparent;">
+
     <h2 class="mb-4 text-center">Panel Principal</h2>
 
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
 
         <div class="col-md-4">
             <div class="card shadow-sm text-center p-4">
                 <h4>Productos</h4>
-                <h2><?= $totalProductos ?></h2>
+                <h2><?= (int)$totalProductos ?></h2>
                 <p>Gestionar productos</p>
-                <a href="/pharma-track/public/index.php?url=/productos" class="btn btn-primary">
+                <a href="<?= BASE_URL ?>/productos" class="btn btn-primary">
                     Entrar
                 </a>
             </div>
         </div>
 
         <div class="col-md-4">
-        <div class="card shadow-sm text-center p-4">
-            <h4>Categorias</h4>
-            <h2><?= $totalCategorias ?></h2>
-            <p>Gestionar categorias</p>
-            <a href="/pharma-track/public/index.php?url=/categorias" class="btn btn-success">
-                Entrar
-            </a>
+            <div class="card shadow-sm text-center p-4">
+                <h4>Categorías</h4>
+                <h2><?= (int)$totalCategorias ?></h2>
+                <p>Gestionar categorías</p>
+                <a href="<?= BASE_URL ?>/categorias" class="btn btn-success">
+                    Entrar
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="card shadow-sm text-center p-4">
-            <h4>Inventario</h4>
-            <p class="fw-bold">Stock bajo<?= $stockBajo ?></p>
-            <p>Productos con stock bajo</p>
-            <a href="/pharma-track/public/index.php?url=/inventario" class="btn btn-warning">
-                Entrar
-            </a>
+        <div class="col-md-4">
+            <div class="card shadow-sm text-center p-4">
+                <h4>Inventario</h4>
+                <h2><?= (int)$stockBajo ?></h2>
+                <p>Productos con stock bajo</p>
+                <a href="<?= BASE_URL ?>/inventario" class="btn btn-warning">
+                    Entrar
+                </a>
+            </div>
         </div>
+
     </div>
-
-</div>
 </div>
 
-<?php
-require_once __DIR__ . '/../layout/footer.php';
+<?php require_once __DIR__ . '/../layout/footer.php'; ?>

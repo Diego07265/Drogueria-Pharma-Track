@@ -5,25 +5,23 @@ require_once __DIR__ . '/../layout/header.php';
 
 <h2 class="mb-3">Listado de Categorías</h2>
 
-<a href="/pharma-track/public/index.php?url=/categorias/create"
-    class="btn btn-primary mb-3">
+<a href="<?= BASE_URL ?>/categorias/create" class="btn btn-primary mb-3">
     Nueva Categoría
 </a>
 
 <?php if (isset($_GET['msg'])): ?>
-    <div class="alert alert-success">
+    <div class="alert <?= $_GET['msg'] === 'error' ? 'alert-danger' : 'alert-success' ?>">
         <?php
         echo match ($_GET['msg']) {
-            'ok' => 'Categoría creada correctamente',
+            'ok'      => 'Categoría creada correctamente',
             'updated' => 'Categoría actualizada correctamente',
             'deleted' => 'Categoría eliminada correctamente',
-            default => 'Operación realizada'
+            'error'   => 'No se puede eliminar la categoría porque tiene productos asignados',
+            default   => 'Operación realizada'
         };
         ?>
     </div>
 <?php endif; ?>
-
-
 
 <table class="table table-bordered">
     <thead>
@@ -43,15 +41,16 @@ require_once __DIR__ . '/../layout/header.php';
                     <td><?= htmlspecialchars($c['descripcion'] ?? '') ?></td>
                     <td>
                         <a class="btn btn-warning btn-sm"
-                            href="/pharma-track/public/index.php?url=/categorias/<?= (int)$c['categoria_id'] ?>/edit">
+                            href="<?= BASE_URL ?>/categorias/<?= (int)$c['categoria_id'] ?>/edit">
                             Editar
                         </a>
 
-                        <a class="btn btn-danger btn-sm"
-                            href="/pharma-track/public/index.php?url=/categorias/<?= (int)$c['categoria_id'] ?>/delete"
-                            onclick="return confirm('¿Eliminar esta categoría?')">
-                            Eliminar
-                        </a>
+                        <form method="POST"
+                              action="<?= BASE_URL ?>/categorias/<?= (int)$c['categoria_id'] ?>/delete"
+                              style="display:inline-block"
+                              onsubmit="return confirm('¿Eliminar esta categoría?')">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -62,4 +61,5 @@ require_once __DIR__ . '/../layout/header.php';
         <?php endif; ?>
     </tbody>
 </table>
+
 <?php require_once __DIR__ . '/../layout/footer.php'; ?>

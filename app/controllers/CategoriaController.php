@@ -100,19 +100,22 @@ class CategoriaController
     }
     //Eliminar categoria
 
-    public function delete(string $id): void
-    {
-        if (!is_numeric($id)) {
-            header('Location: /pharma-track/public/index.php?url=/categorias');
-            exit;
-        }
-
-        $id = (int) $id;
-
-        $categoria = new Categoria();
-        $categoria->eliminar($id);
-
-        header('Location: /pharma-track/public/index.php?url=/categorias&msg=deleted');
+public function delete(string $id): void
+{
+    if (!is_numeric($id)) {
+        header('Location: ' . BASE_URL . '/categorias');
         exit;
     }
+
+    $id = (int) $id;
+
+    try {
+        $categoria = new Categoria();
+        $categoria->eliminar($id);
+        header('Location: ' . BASE_URL . '/categorias&msg=deleted');
+    } catch (PDOException $e) {
+        header('Location: ' . BASE_URL . '/categorias&msg=error');
+    }
+    exit;
+}
 }

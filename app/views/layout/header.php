@@ -1,5 +1,4 @@
 <?php
-// Iniciar la sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -20,7 +19,6 @@ if (session_status() === PHP_SESSION_NONE) {
             background-repeat: no-repeat;
         }
 
-        /* Caja blanca para que el contenido se lea */
         .container {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -38,7 +36,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
 
-            <a class="navbar-brand fw-bold" href="/pharma-track/public/index.php?url=/dashboard">Pharma Track</a>
+            <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>/dashboard">Pharma Track</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
@@ -48,18 +46,15 @@ if (session_status() === PHP_SESSION_NONE) {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?url=/dashboard">Dashboard
-                        </a>
+                        <a class="nav-link" href="<?= BASE_URL ?>/dashboard">Dashboard</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?url=/productos">Productos
-                        </a>
+                        <a class="nav-link" href="<?= BASE_URL ?>/productos">Productos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/pharma-track/public/index.php?url=/categorias">Categorias
-                        </a>
+                        <a class="nav-link" href="<?= BASE_URL ?>/categorias">Categorías</a>
                     </li>
 
                 </ul>
@@ -69,9 +64,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         <?= htmlspecialchars($_SESSION['empleado']['usuario']) ?>
                     </span>
 
-                    <a href="/pharma-track/public/index.php?url=/logout" class="btn btn-outline-light btn-sm">
-                        Cerrar sesión
-                    </a>
+                    <form method="POST" action="<?= BASE_URL ?>/logout">
+                        <button type="submit" class="btn btn-outline-light btn-sm">
+                            Cerrar sesión
+                        </button>
+                    </form>
                 <?php endif; ?>
 
             </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2025 a las 03:33:49
+-- Tiempo de generación: 10-05-2026 a las 16:57:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -113,16 +113,18 @@ CREATE TABLE `empleado` (
   `apellido` varchar(100) NOT NULL,
   `cargo` varchar(50) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL,
-  `fecha_contratacion` date DEFAULT NULL
+  `fecha_contratacion` date DEFAULT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `clave` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `empleado` (`empleado_id`, `nombre`, `apellido`, `cargo`, `telefono`, `fecha_contratacion`) VALUES
-(1, 'Laura', 'Martinez', 'Cajera', '315444777', '2024-01-10'),
-(2, 'Jorge', 'Lopez', 'Administrador', '315444888', '2023-06-15');
+INSERT INTO `empleado` (`empleado_id`, `nombre`, `apellido`, `cargo`, `telefono`, `fecha_contratacion`, `usuario`, `clave`) VALUES
+(1, 'Laura', 'Martinez', 'Cajera', '315444777', '2024-01-10', 'admin', '$2y$10$FhdY5E5PtfrBL3ffYmRJH.M7QRONZQjRjEDLXcu1WfgkcUdSLM7Va'),
+(2, 'Jorge', 'Lopez', 'Administrador', '315444888', '2023-06-15', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,7 @@ CREATE TABLE `producto` (
   `fecha_vencimiento` date DEFAULT NULL,
   `requiere_receta` tinyint(1) NOT NULL DEFAULT 0,
   `id_proveedor` int(11) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -276,13 +278,13 @@ ALTER TABLE `detalleventa`
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `empleado_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `empleado_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `producto_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `producto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
