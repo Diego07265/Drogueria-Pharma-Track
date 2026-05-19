@@ -7,9 +7,6 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../config/bd.php';
-
-
 class Producto
 {
     private PDO $pdo;

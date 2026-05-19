@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../config/bd.php';
-
 class Categoria
 {
     private PDO $pdo;
