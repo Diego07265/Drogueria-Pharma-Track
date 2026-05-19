@@ -1,0 +1,9 @@
+# Variables de entorno - NUNCA subir al repo
+.env
+
+# XAMPP / sistema
+*.log
+
+# IDEs
+.vscode/
+.idea/
