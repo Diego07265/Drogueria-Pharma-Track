@@ -1,5 +1,7 @@
 <?php
+require_once __DIR__ . '/../../core/Csrf.php';
 require_once __DIR__ . '/../layout/header.php';
+$csrfToken = Csrf::generarToken();
 ?>
 
 <h2 class="mb-3">Editar Categoría</h2>
@@ -8,7 +10,7 @@ require_once __DIR__ . '/../layout/header.php';
     <div class="card-body">
         <form method="POST" action="<?= BASE_URL ?>/categorias/<?= (int)$categoria['categoria_id'] ?>/update">
             <input type="hidden" name="categoria_id" value="<?= (int)$categoria['categoria_id'] ?>">
-
+            <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
             <div class="mb-3">
                 <label class="form-label">Nombre *</label>
                 <input type="text"

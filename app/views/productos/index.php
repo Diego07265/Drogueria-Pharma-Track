@@ -1,6 +1,8 @@
 <?php
 $productos = $productos ?? [];
+require_once __DIR__ . '/../../core/Csrf.php';
 require_once __DIR__ . '/../layout/header.php';
+$csrfToken = Csrf::generarToken();
 ?>
 
 <h2 class="mb-3">Listado de Productos</h2>
@@ -54,6 +56,7 @@ require_once __DIR__ . '/../layout/header.php';
                           action="<?= BASE_URL ?>/productos/<?= (int)$p['producto_id'] ?>/delete"
                           style="display:inline-block"
                           onsubmit="return confirm('¿Seguro que desea eliminar este producto?')">
+                        <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                     </form>
                 </td>

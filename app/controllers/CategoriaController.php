@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../models/Categoria.php';
 require_once __DIR__ . '/../core/Auth.php';
+// Cargamos Csrf para proteger los formularios
+require_once __DIR__ . '/../core/Csrf.php';
 
 class CategoriaController
 {
     public function __construct()
     {
-        Auth::check(); // Protección de rutas
+        Auth::check();
     }
 
-    //listar categorias
     public function index(): void
     {
         $categoriaModel = new Categoria();
@@ -21,24 +22,23 @@ class CategoriaController
         require_once __DIR__ . '/../views/categorias/index.php';
     }
 
-    //Mostrar formulario para crear categoria
-
     public function create(): void
     {
         require_once __DIR__ . '/../views/categorias/create.php';
     }
 
-    //Guardar nueva categoria
-
     public function store(): void
     {
+        // Verificamos el token CSRF antes de procesar cualquier dato
+        Csrf::validarToken();
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /pharma-track/public/index.php?url=/categorias');
+            header('Location: ' . BASE_URL . '/categorias');
             exit;
         }
 
         $datos = [
-            'nombre' => trim($_POST['nombre'] ?? ''),
+            'nombre'      => trim($_POST['nombre'] ?? ''),
             'descripcion' => trim($_POST['descripcion'] ?? ''),
         ];
 
@@ -49,43 +49,45 @@ class CategoriaController
         $categoria = new Categoria();
         $categoria->guardar($datos);
 
-        header('Location: /pharma-track/public/index.php?url=/categorias&msg=ok');
+        // Corregido: & por ?
+        header('Location: ' . BASE_URL . '/categorias?msg=ok');
         exit;
     }
-
-    // Mostrar formulario para editar categoria
 
     public function edit(string $id): void
     {
         if (!is_numeric($id)) {
-            header('Location: /pharma-track/public/index.php?url=/categorias');
+            header('Location: ' . BASE_URL . '/categorias');
             exit;
         }
+
         $id = (int)$id;
 
         $categoriaModel = new Categoria();
         $categoria = $categoriaModel->obtenerPorId($id);
 
         if (!$categoria) {
-            header('Location: /pharma-track/public/index.php?url=/categorias');
+            header('Location: ' . BASE_URL . '/categorias');
             exit;
         }
+
         require_once __DIR__ . '/../views/categorias/edit.php';
     }
 
-    //Actualizar categoria
-
     public function update(string $id): void
     {
+        // Verificamos el token CSRF antes de procesar cualquier dato
+        Csrf::validarToken();
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /pharma-track/public/index.php?url=/categorias');
+            header('Location: ' . BASE_URL . '/categorias');
             exit;
         }
 
         $datos = [
             'categoria_id' => (int) $id,
-            'nombre' => trim($_POST['nombre'] ?? ''),
-            'descripcion' => trim($_POST['descripcion'] ?? ''),
+            'nombre'       => trim($_POST['nombre'] ?? ''),
+            'descripcion'  => trim($_POST['descripcion'] ?? ''),
         ];
 
         if ($datos['categoria_id'] <= 0 || $datos['nombre'] === '') {
@@ -95,27 +97,32 @@ class CategoriaController
         $categoria = new Categoria();
         $categoria->actualizar($datos['categoria_id'], $datos);
 
-        header('Location: /pharma-track/public/index.php?url=/categorias&msg=updated');
-        exit;
-    }
-    //Eliminar categoria
-
-public function delete(string $id): void
-{
-    if (!is_numeric($id)) {
-        header('Location: ' . BASE_URL . '/categorias');
+        // Corregido: & por ?
+        header('Location: ' . BASE_URL . '/categorias?msg=updated');
         exit;
     }
 
-    $id = (int) $id;
+    public function delete(string $id): void
+    {
+        // Verificamos el token CSRF antes de procesar cualquier dato
+        Csrf::validarToken();
 
-    try {
-        $categoria = new Categoria();
-        $categoria->eliminar($id);
-        header('Location: ' . BASE_URL . '/categorias&msg=deleted');
-    } catch (PDOException $e) {
-        header('Location: ' . BASE_URL . '/categorias&msg=error');
+        if (!is_numeric($id)) {
+            header('Location: ' . BASE_URL . '/categorias');
+            exit;
+        }
+
+        $id = (int) $id;
+
+        try {
+            $categoria = new Categoria();
+            $categoria->eliminar($id);
+            // Corregido: & por ?
+            header('Location: ' . BASE_URL . '/categorias?msg=deleted');
+        } catch (PDOException $e) {
+            // Corregido: & por ?
+            header('Location: ' . BASE_URL . '/categorias?msg=error');
+        }
+        exit;
     }
-    exit;
-}
 }

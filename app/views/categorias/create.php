@@ -1,3 +1,8 @@
+<?php
+// Cargamos la clase Csrf para generar el token de seguridad
+require_once __DIR__ . '/../../core/Csrf.php';
+$csrfToken = Csrf::generarToken();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,6 +38,8 @@
     <h2>Nueva Categoría</h2>
 
     <form method="post" action="/pharma-track/public/index.php?url=/categorias/store">
+        <!-- Token de seguridad CSRF - viaja oculto con el formulario -->
+        <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" required>

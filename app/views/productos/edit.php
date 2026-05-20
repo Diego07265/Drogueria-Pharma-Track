@@ -1,7 +1,11 @@
-php<?php
+<?php
 $categorias = $categorias ?? [];
 $proveedores = $proveedores ?? [];
+
+//Cargamos la clase Csrf para generar el token de seguridad
+require_once __DIR__ . '/../../core/Csrf.php';
 require_once __DIR__ . '/../layout/header.php';
+$csrfToken = Csrf::generarToken();
 ?>
 
 <div class="container mt-5 mb-5">
@@ -12,6 +16,8 @@ require_once __DIR__ . '/../layout/header.php';
 
         <div class="card-body">
             <form action="<?= BASE_URL ?>/productos/<?= (int)$producto['producto_id'] ?>/update" method="POST">
+                <!-- Token de seguridad CSRF - viaja oculto con el formulario -->
+                <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
                 <input type="hidden" name="producto_id" value="<?= (int)$producto['producto_id'] ?>">
 
                 <div class="row mb-3">

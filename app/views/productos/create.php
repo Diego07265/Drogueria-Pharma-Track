@@ -1,3 +1,8 @@
+<?php
+// Incluir el archivo de la clase Csrf para generar el token
+require_once __DIR__ . '/../../core/Csrf.php';
+$csrfToken = Csrf::generarToken();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -60,8 +65,14 @@
 
             <div class="card-body">
                 <form action="?url=/productos/store" method="post">
-
-
+                    <!--
+                        CSRF TOKEN
+                        Este campo es invisible para el usuario (type="hidden").
+                        Guarda el token generado por Csrf::generarToken().
+                        Cuando el formulario se envíe, este valor viajará en $_POST
+                        y el controlador lo comparará con el de la sesión.
+                    -->
+                    <input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
 
                     <!-- Aquí van los campos del formulario -->
                     <div class="row mb-3">
@@ -74,13 +85,14 @@
                             <label class="form-label">Categoría</label>
                             <select name="categoria_id" class="form-control" required>
                                 <option value="">Seleccione categoría</option>
-                                <option value="1">Medicamentos</option>
-                                <option value="2">Higiene</option>
-                                <option value="3">Suplementos</option>
-                                <option value="4">Analgésicos</option>
-                                <option value="5">Antibióticos</option>
-                                <option value="6">Vitaminas</option>
-                                <option value="7">Antigripales</option>
+
+                                <?php if (isset($categorias) && is_array($categorias)): ?>
+                                    <?php foreach ($categorias as $categoria): ?>
+                                        <option value="<?= (int)$categoria['categoria_id'] ?>">
+                                            <?= htmlspecialchars($categoria['nombre']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </select>
                         </div>
                     </div>
